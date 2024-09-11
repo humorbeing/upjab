@@ -41,13 +41,13 @@ def what_missing_in_folder(
 
 
 if __name__ == '__main__':
-    original_path = '../../example_data/videos/fishes/not_crowd'
-    changed_path = '../../example_data/videos/fishes/not_crowd_0.80'
+    original_path = 'example_data/text/black'
+    changed_path = 'example_data/text/black_split/0000'
 
     what_missing_in_folder(
         original_path=original_path,
         changed_path=changed_path,
-        file_type_list=['mp4']
+        file_type_list=['txt']
     )
 
 

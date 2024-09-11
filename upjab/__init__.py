@@ -1,2 +1,2 @@
 def hi():
-    print('hi from gg tool.')
+    print('hi from upjab.')

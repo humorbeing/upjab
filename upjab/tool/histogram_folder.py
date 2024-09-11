@@ -32,8 +32,8 @@ def histogram_folder(
         
 
 
-if __name__ == '__main__':
-    target_folder = '../../example_data/images/disease_image/images_big_image_dataset/disease_crop'
+if __name__ == '__main__':    
+    target_folder = 'example_data/text/white'
     import random
     random.seed(5)
 
@@ -43,6 +43,6 @@ if __name__ == '__main__':
     histogram_folder(
         target_folder=target_folder,
         detect=fake_detect,
-        file_type_list=['jpg', 'JPG']
+        file_type_list=['txt']
     )
     print('')

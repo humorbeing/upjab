@@ -1,9 +1,4 @@
-
-from upjab import hi
-
-hi()
-
-from upjab.tool.histogram_folder import histogram_folder
+from tool.histogram_folder import histogram_folder
 
 
 target_folder = 'example_data/text/white'
@@ -19,7 +14,7 @@ histogram_folder(
     file_type_list=['txt']
 )
 
-from upjab.tool.collect_to_one_folder import collect_to_one_folder
+from tool.collect_to_one_folder import collect_to_one_folder
 
 target_folder = 'example_data/text/white_histogram'
 collect_to_one_folder(
@@ -28,8 +23,8 @@ collect_to_one_folder(
 )
 
 
-from upjab.tool.get_file_path_list import get_file_path_list
-from upjab.tool.file_path_get_last_folder import file_path_get_last_folder
+from tool.get_file_path_list import get_file_path_list
+from tool.file_path_get_last_folder import file_path_get_last_folder
 
 
 target_folder = 'example_data/images'
@@ -41,7 +36,7 @@ for f_ in file_list:
     print('--')
 
 
-from upjab.tool.only_python_files import only_python_files
+from tool.only_python_files import only_python_files
 
 target_folder='example_data/images'
 file_extends=['py']
@@ -52,7 +47,7 @@ only_python_files(
     
 )
 
-from upjab.tool.shuffle_split_folder import shuffle_split_folder
+from tool.shuffle_split_folder import shuffle_split_folder
 
 target_folder = 'example_data/text/white'
 shuffle_split_folder(
@@ -62,7 +57,7 @@ shuffle_split_folder(
     split_ratio=0.2
 )
 
-from upjab.tool.split_into_folders import split_into_folders
+from tool.split_into_folders import split_into_folders
 target_folder = 'example_data/text/black'
 split_into_folders(
     target_folder=target_folder,
@@ -73,7 +68,7 @@ split_into_folders(
 )      
 
 
-from upjab.tool.what_missing_in_folder import what_missing_in_folder
+from tool.what_missing_in_folder import what_missing_in_folder
 original_path = 'example_data/text/black'
 changed_path = 'example_data/text/black_split/0000'
 

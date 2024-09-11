@@ -15,9 +15,9 @@ def file_path_get_last_folder(fi, surfix='_ADDSurFix'):
     return folder_path
 
 if __name__ == '__main__':
-    from upjab.tool.get_file_path import get_file_path
-    target_folder = '../../example_data/images'
-    file_list = get_file_path(target_folder, ['py'])
+    from upjab.tool.get_file_path_list import get_file_path_list
+    target_folder = 'example_data/images'
+    file_list = get_file_path_list(target_folder, ['py'])
     # print(file_list)
     for f_ in file_list:
         new_file_path = file_path_get_last_folder(f_, '_ALLGOOD')

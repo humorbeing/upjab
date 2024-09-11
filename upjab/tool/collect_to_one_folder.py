@@ -27,9 +27,10 @@ def collect_to_one_folder(
         shutil.copy(f_, save_folder_path)  # dst can be folder
 
 if __name__ == '__main__':
-    target_folder = '../../example_data/images/disease_image/images_big_image_dataset/disease_crop_histogram'
+    
+    target_folder = 'example_data/text/white_histogram'
     collect_to_one_folder(
         target_folder=target_folder,
-        file_extends=['jpg', 'JPG'],        
+        file_extends=['jpg', 'txt'],        
     )      
     print('End')

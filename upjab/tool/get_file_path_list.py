@@ -10,7 +10,7 @@ def get_file_path_list(target_folder, file_extends=['jpg', 'JPG']):
     
 
 if __name__ == '__main__':
-    target_folder = '../../example_data/images'
+    target_folder = 'example_data/images'
     file_list = get_file_path_list(target_folder, file_extends=['jpg', 'JPG', 'json'])
     for f_ in file_list:
         print(f_)
