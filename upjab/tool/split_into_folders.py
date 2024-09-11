@@ -16,14 +16,15 @@ def split_into_folders(
     target_folder,
     file_extends=['jpg', 'JPG'],
     cutting=50,
-    is_shuffle=True
+    is_shuffle=True,
+    random_seed=5
     ):
 
     file_list = get_file_path_list(target_folder, file_extends=file_extends)
     
     if is_shuffle:
         import random
-        random.seed(5)
+        random.seed(random_seed)
         random.shuffle(file_list)   
 
     steps = int(len(file_list)/cutting)
@@ -48,11 +49,12 @@ def split_into_folders(
 
 
 if __name__ == '__main__':
-    target_folder = '../../example_data/images/disease_image/images_big_image_dataset/disease'
+    target_folder = 'example_data/text/black'
     split_into_folders(
         target_folder=target_folder,
-        file_extends=['jpg', 'JPG'],
+        file_extends=['jpg', 'txt'],
         cutting=3,
-        is_shuffle=True
+        is_shuffle=True,
+        random_seed=5
     )      
     print('End')

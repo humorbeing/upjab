@@ -57,19 +57,13 @@ def shuffle_split_folder(
 
 
 if __name__ == '__main__':
-    # target_folder = '../../example_data/videos/fishes/crowd'
-    # shuffle_split_folder(
-    #     target_folder=target_folder,
-    #     file_type_list=['mp4'],
-    #     random_seed=5,
-    #     split_ratio=0.60
-    # )
+    
 
-    target_folder = '../../example_data/videos/fishes/not_crowd'
+    target_folder = 'example_data/text/white'
     shuffle_split_folder(
         target_folder=target_folder,
-        file_type_list=['mp4'],
-        random_seed=5,
+        file_type_list=['txt'],
+        random_seed=1,
         split_ratio=0.2
     )
     print('end')
