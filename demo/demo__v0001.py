@@ -82,3 +82,14 @@ what_missing_in_folder(
     changed_path=changed_path,
     file_type_list=['txt']
 )
+
+import subprocess
+
+subprocess.run(["ls", "-l"])
+# subprocess.run(["ls -l"])  # error
+subprocess.run(["ls", "demo/", "-l"])
+
+subprocess.run(["chmod", "+x", "example_data/images/disease_image/run.sh"])
+subprocess.run(["./run.sh"], shell=True, cwd="example_data/images/disease_image")
+# subprocess.run(["cd", "example_data/images/disease_image/", "&&", "./run.sh"], shell=True)  # not working
+# subprocess.run(["./run.sh"])  # error
