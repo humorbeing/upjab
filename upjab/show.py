@@ -89,3 +89,9 @@ subprocess.run(["chmod", "+x", "example_data/images/disease_image/run.sh"])
 subprocess.run(["./run.sh"], shell=True, cwd="example_data/images/disease_image")
 # subprocess.run(["cd", "example_data/images/disease_image/", "&&", "./run.sh"], shell=True)  # not working
 # subprocess.run(["./run.sh"])  # error
+
+from tool.setup_logger import setup_logger
+
+filepath = 'example_data/example.log'
+logger = setup_logger(filepath)
+logger.info('hi from upjab logger')
