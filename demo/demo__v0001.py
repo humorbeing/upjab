@@ -3,6 +3,87 @@ from upjab import hi
 
 hi()
 
+import torch
+from upjab.vision.i3d_video_feature import I3D_Video_Feature
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+i3d_video_feature = I3D_Video_Feature(
+    ckpt_path=None,        
+    device=device,
+    local_weight=False)
+
+video_path = 'example_data/videos/fishes/crowd/00000001.mp4'
+video_feature = i3d_video_feature.extract_video(
+    video_path=video_path,
+    is_ten_crop=True,
+    target_number_segment=12,        
+    return_numpy=True)
+
+print(video_feature.shape)
+
+video_feature = i3d_video_feature.extract_video(
+    video_path=video_path,
+    is_ten_crop=False,
+    target_number_segment=7,        
+    return_numpy=False)
+
+print(video_feature.shape)
+
+video_path = 'example_data/videos/fishes/crowd/00000103_notcrowd.mp4'
+video_feature = i3d_video_feature.extract_video(
+    video_path=video_path,
+    is_ten_crop=True,
+    target_number_segment=4,        
+    return_numpy=False)
+
+print(video_feature.shape)
+
+
+folder_path = 'example_data/videos/fishes/not_crowd'
+i3d_video_feature.extract_folder(folder_path=folder_path)
+
+
+
+
+from upjab.vision.read_video import read_video
+
+
+video_path = 'example_data/videos/fishes/crowd/00000001.mp4'
+vid = read_video(video_path=video_path)
+vid = read_video(video_path=video_path, echo=True)
+# vid = np.random.randint(0, 256, size=(105,360,480,3))
+
+
+video_path = 'example_data/videos/fishes/crowd/00000103_notcrowd.mp4'
+vid = read_video(
+    video_path=video_path,
+    is_cv2=True,
+    feeding_fps=None,
+    echo=True)
+
+vid = read_video(
+    video_path=video_path,
+    is_cv2=False,
+    feeding_fps=None,
+    echo=True)
+
+vid = read_video(
+    video_path=video_path,
+    is_cv2=True,
+    feeding_fps=15,
+    echo=True)
+
+from upjab.vision.read_image import read_image
+
+path = 'example_data/images/disease_image/images_original/119799_objt_rs_2020-12-15_13-14-02-33_002.JPG'
+image = read_image(path)
+
+import numpy as np
+
+image_np = np.array(image)
+
+
+
 from upjab.tool.histogram_folder import histogram_folder
 
 
