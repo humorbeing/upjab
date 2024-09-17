@@ -1,3 +1,17 @@
+
+
+
+from tool.experiment_configurations.v0001.args_setup import args_setup
+from tool.args_setup_and_logger import args_setup_and_logger
+args = args_setup("From_Experiment_Args_Setup")
+logging = args_setup_and_logger(args)
+logging.info(f'fake accuracy: 0.58 fake auc-roc: 0.88 fake loss: 0.42')
+logging.info("done")
+with open(args.checkpoint_save_path, 'w') as f:
+    f.write('fake checkpoint')
+print('')
+
+
 import torch
 from vision.i3d_video_feature import I3D_Video_Feature
 

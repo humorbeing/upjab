@@ -7,3 +7,9 @@ checkpoints/
 /*.egg-info
 
 **/images_big_image_dataset
+
+/upjab/tool/experiment_configurations/v0001/checkpoints/
+/upjab/tool/experiment_configurations/v0001/logs/
+
+/demo/experiment_configurations/v0001/checkpoints/
+/demo/experiment_configurations/v0001/logs/
