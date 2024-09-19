@@ -13,3 +13,7 @@ checkpoints/
 
 /demo/experiment_configurations/v0001/checkpoints/
 /demo/experiment_configurations/v0001/logs/
+
+
+**/*.pt
+**/*.pth

@@ -3,6 +3,13 @@ from upjab import hi
 
 hi()
 
+from upjab.tool.timer import timer
+import time
+
+with timer() as t:
+    time.sleep(1.2345)
+print(f'Print Elapsed time: {t.interval:>20.2f} seconds')
+
 
 
 from experiment_configurations.v0001.args_setup import args_setup
