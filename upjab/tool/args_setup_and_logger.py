@@ -42,7 +42,7 @@ def log_args(logging, args):
     logging.info('----------------------------------------')
 
 
-def set_seed(seed):
+def set_random_seed(seed):
     import torch
     import numpy as np
     import random
@@ -54,6 +54,7 @@ def set_seed(seed):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.enabled = True
+    torch.use_deterministic_algorithms(True)
 
 
 
@@ -63,7 +64,7 @@ def args_setup_and_logger(args):
     log_args(logging, args)
 
     if args.seed > 0:
-        set_seed(args.seed)
+        set_random_seed(args.seed)
     import os
     os.makedirs(f'{args.working_path}/{args.checkpoint_save_folder}', exist_ok=True)
     return logging

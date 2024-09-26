@@ -1,4 +1,69 @@
 
+from torchvision.transforms import v2
+from vision.torchvision_plot import torchvision_transform_plot
+from vision.torchvision_plot import plot
+from torchvision.io import read_image
+
+# import torch
+# torch.manual_seed(1)   
+
+transforms_list = [v2.RandomCrop(size=(224, 224))]    
+
+path = 'example_data/images/assets/astronaut.jpg'
+transforms_list = [
+    v2.RandomResizedCrop(size=(224, 224), antialias=True),
+]
+
+torchvision_transform_plot(path, transforms_list)
+
+transform_functions = list(v2.__dict__.keys())
+
+for i in transform_functions:
+    try:
+        transforms_list = [v2.__dict__[i]()]
+        print(f'Transform: {i}')
+        torchvision_transform_plot(path, transforms_list)
+    except:
+        print(f'FAIL Transform: {i}')
+        # input()
+        if i.startswith('_'):
+            pass
+        else:
+            print(v2.__dict__[i].__doc__)
+        # input()
+        pass
+
+
+from torchvision import tv_tensors  # we'll describe this a bit later, bare with us
+
+img = read_image(path)
+
+boxes = tv_tensors.BoundingBoxes(
+    [
+        [15, 10, 370, 510],
+        [275, 340, 510, 510],
+        [130, 345, 210, 425]
+    ],
+    format="XYXY", canvas_size=img.shape[-2:])
+
+transforms = v2.Compose([
+    v2.RandomResizedCrop(size=(224, 224), antialias=True),
+    v2.RandomPhotometricDistort(p=1),
+    v2.RandomHorizontalFlip(p=1),
+])
+
+out_img, out_boxes = transforms(img, boxes)
+print(type(boxes), type(out_boxes))
+
+
+
+plot([(img, boxes), (out_img, out_boxes)])
+
+
+
+
+
+
 from tool.timer import timer
 import time
 
