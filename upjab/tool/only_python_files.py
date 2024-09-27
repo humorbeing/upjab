@@ -16,18 +16,16 @@ def only_python_files(
     
     ):
     '''
-    
-    if __name__ == '__main__':
-        target_folder='../../example_data/images'
-        file_extends=['py']
         
-        only_python_files(
-            target_folder=target_folder,
-            file_extends=file_extends,
-            
-        )
-        print('end')
+    target_folder='../../example_data/images'
+    file_extends=['py']
     
+    only_python_files(
+        target_folder=target_folder,
+        file_extends=file_extends,
+        
+    )
+            
     '''
     file_list = get_file_path_list(target_folder=target_folder,file_extends=file_extends)
 
