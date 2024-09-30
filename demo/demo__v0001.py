@@ -3,7 +3,21 @@ from upjab import hi
 
 hi()
 
+from upjab.tool.get_class_distribution import get_class_distribution
+import torchvision
 
+dataset_root = 'example_data/text/long-tail_dataset'
+
+def whatis(x):
+    return 0
+dataset = torchvision.datasets.DatasetFolder(root=dataset_root, loader=whatis, extensions=['.txt'], transform=None)
+
+print("Distribution of classes: \n", get_class_distribution(dataset))
+
+print(dataset.classes)
+print(dataset.class_to_idx)
+
+print('done')
 
 from torchvision.transforms import v2
 from upjab.vision.torchvision_plot import torchvision_transform_plot
