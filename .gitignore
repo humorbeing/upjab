@@ -1,7 +1,16 @@
 **/__pycache__/
 checkpoints/
+logs/
 **/ckpt/
 .vscode/
 **/fish_images/
 /codes_here
 /*.egg-info
+
+**/images_big_image_dataset
+
+
+**/*.pt
+**/*.pth
+
+example_data/videos/fishes/crowd/00000001
