@@ -3,7 +3,35 @@ from upjab import hi
 
 hi()
 
-from upjab.tool.get_class_distribution import get_class_distribution
+
+from upjab.vision.video_to_image import video_to_image
+video_path = 'example_data/videos/fishes/crowd/00000001.mp4'
+video_to_image(video_path)
+
+from upjab.vision.VideoClips import VideoClips
+
+video_path = 'example_data/videos/fishes/crowd/00000103_notcrowd.mp4'
+vc = VideoClips(
+    video_path,
+    frame_rate=15
+)
+temp11 = vc.get_clip(0)
+print(f'{len(vc)=}')
+
+
+from upjab.tool.timer import timethis
+import time
+with timethis as tt:
+    time.sleep(2)
+
+print(f'Print Elapsed time: {timethis.interval:>20.2f} seconds')
+print(f'Print Elapsed time: {tt.interval:>20.2f} seconds')
+
+with timethis:
+    time.sleep(1.5)
+print(f'Print Elapsed time: {timethis.interval:>20.2f} seconds')
+
+from upjab.datasets.get_class_distribution import get_class_distribution
 import torchvision
 
 dataset_root = 'example_data/text/long-tail_dataset'

@@ -12,7 +12,7 @@ except ImportError:
 
 def only_python_files(
     target_folder='.',
-    file_extends=['py'],
+    file_extends=['py', 'ipynb'],
     
     ):
     '''
