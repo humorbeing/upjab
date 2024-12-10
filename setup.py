@@ -5,7 +5,7 @@ REQUIREMENTS = [i for i in open("requirements.txt").readlines()]
 setuptools.setup(
     name="upjab",
     version="0.0.1",
-    author="PNU-VBlab",
+    author="GG",
     author_email="geemguang@gmail.com",
     description=DESCRIPTION,
     # long_description = open('README.rst', encoding='utf-8').read(),
