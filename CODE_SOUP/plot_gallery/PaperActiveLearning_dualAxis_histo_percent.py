@@ -1,5 +1,5 @@
 
-log_path = 'uu/plot_gallery/data/pre-histogram_final_pick_low_all_train.txt'
+log_path = 'CODE_SOUP/plot_gallery/data/pre-histogram_final_pick_low_all_train.txt'
 
 show_figure = True
 save_figure = False
