@@ -4,7 +4,7 @@ DESCRIPTION = "-"
 REQUIREMENTS = [i for i in open("requirements.txt").readlines()]
 setuptools.setup(
     name="upjab",
-    version="0.0.1",
+    version="0.1.1",
     author="GG",
     author_email="geemguang@gmail.com",
     description=DESCRIPTION,
