@@ -14,3 +14,5 @@ logs/
 **/*.pth
 **/flagged
 example_data/videos/fishes/crowd/00000001
+
+**/gradio-multipage
