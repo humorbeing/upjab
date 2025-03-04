@@ -9,4 +9,7 @@ demo = gr.Interface(
     outputs=[gr.Textbox(label="greeting", lines=3)],
 )
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()
+

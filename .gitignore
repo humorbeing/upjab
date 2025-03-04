@@ -5,12 +5,12 @@ logs/
 .vscode/
 **/fish_images/
 /codes_here
-/*.egg-info
+**/*.egg-info
 
 **/images_big_image_dataset
 
 
 **/*.pt
 **/*.pth
-
+**/flagged
 example_data/videos/fishes/crowd/00000001

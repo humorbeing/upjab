@@ -9,4 +9,6 @@ demo = gr.Interface(
     outputs=["text"],
 )
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()
