@@ -4,13 +4,13 @@ DESCRIPTION = "-"
 REQUIREMENTS = [i for i in open("requirements.txt").readlines()]
 setuptools.setup(
     name="upjab",
-    version="0.0.1",
+    version="0.1.1",
     author="GG",
     author_email="geemguang@gmail.com",
     description=DESCRIPTION,
     # long_description = open('README.rst', encoding='utf-8').read(),
     # long_description_content_type='text/x-rst',
-    # python_requires='>=3.8',
+    python_requires='>=3.8',
     packages=['upjab'],
     # classifiers = [
     #     "Programming Language :: Python :: 3",
