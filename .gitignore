@@ -1,20 +1,9 @@
 **/__pycache__/
-checkpoints/
-logs/
-**/ckpt/
-.vscode/
-**/fish_images/
-/codes_here
 **/*.egg-info
 
-**/images_big_image_dataset
 
 
-**/*.pt
-**/*.pth
-**/flagged
-example_data/videos/fishes/crowd/00000001
 
-**/gradio-multipage
+
 
 
