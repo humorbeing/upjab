@@ -12,4 +12,7 @@ show.add_clean(clean_upjab1)
 
 
 if __name__ == '__main__':
-    show.start()
+    # show.start()
+    
+    # show.show()
+    show.clean()

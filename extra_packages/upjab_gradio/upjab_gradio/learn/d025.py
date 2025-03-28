@@ -19,15 +19,18 @@ import gradio as gr
 
 
 with gr.Blocks() as demo:
-  num1 = gr.Number()
-  num2 = gr.Number()
-  product = gr.Number()
+    num1 = gr.Number()
+    num2 = gr.Number()
+    product = gr.Number()
 
-  gr.on(
-    [num1.change, num2.change, demo.load], 
-    lambda a, b: a * b, 
-    inputs=[num1, num2], 
-    outputs=product
-  )
+    gr.on(
+        [num1.change, num2.change, demo.load], 
+        lambda a, b: a * b, 
+        inputs=[num1, num2], 
+        outputs=product
+    )
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()
+  

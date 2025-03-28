@@ -25,4 +25,5 @@ with demo:
     b1.click(speech_to_text, inputs=audio_file, outputs=text)
     b2.click(text_to_sentiment, inputs=text, outputs=label)
 
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()

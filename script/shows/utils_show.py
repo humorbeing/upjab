@@ -29,5 +29,21 @@ class Show:
             for c in self.clean_list:
                 c()
                 time.sleep(break_time)
+    
+    def show(self, break_time=1):
+        
+        print('>>> Upjab show started. <<<')
+        for s in self.show_list:
+            s()
+            time.sleep(break_time)
+            
+            
+    
+    def clean(self, break_time=1):        
+            
+        print('-->>> Upjab clean started. <<<--')
+        for c in self.clean_list:
+            c()
+            time.sleep(break_time)
 
 

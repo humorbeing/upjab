@@ -33,4 +33,6 @@ with gr.Blocks() as demo:
         outputs=[food_box, status_box]
     )
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()

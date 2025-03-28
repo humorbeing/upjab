@@ -11,4 +11,7 @@ with gr.Blocks() as demo:
     greet_btn = gr.Button("Greet")
     greet_btn.click(fn=greet, inputs=name, outputs=output, api_name="greet")
 
-demo.launch()
+
+
+if __name__ == "__main__":
+    demo.launch()

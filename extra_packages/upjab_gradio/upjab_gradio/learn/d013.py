@@ -11,4 +11,6 @@ textbox = gr.Textbox()
 
 demo = gr.Interface(generate_text, textbox, textbox)
 
-demo.launch()
+
+if __name__ == "__main__":
+  demo.launch()

@@ -15,4 +15,6 @@ with gr.Blocks() as demo:
     text = gr.Textbox(lines=2, interactive=True, show_copy_button=True)
     radio.change(fn=change_textbox, inputs=radio, outputs=text)
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()

@@ -11,4 +11,6 @@ with gr.Blocks() as demo:
     atob.click(increase, a, b)
     btoa.click(increase, b, a)
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()

@@ -13,4 +13,6 @@ with gr.Blocks() as demo:
     out = gr.Textbox()
     inp.change(welcome, inp, out)
 
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()
+

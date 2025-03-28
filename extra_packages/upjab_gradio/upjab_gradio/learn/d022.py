@@ -12,4 +12,6 @@ with gr.Blocks() as demo:
     skip_button.click(lambda : [gr.skip(), gr.skip()], outputs=numbers)
     random_button.click(lambda : (random.randint(0, 100), random.randint(0, 100)), outputs=numbers)
 
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()
