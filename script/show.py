@@ -3,7 +3,7 @@ from shows.utils_show import Show
 from shows.show_upjab import show_upjab1
 from shows.show_upjab import clean_upjab1
 
-from shows.gradio_multipage.gradio_apps import gradio_apps
+
 
 
 show = Show()
@@ -12,7 +12,7 @@ show.add_clean(clean_upjab1)
 
 
 if __name__ == '__main__':
-    # show.start()
+    show.start()
+      
     
-    # show.show()
-    show.clean()
+    
