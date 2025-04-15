@@ -12,7 +12,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-from script.shows.gradio_multipage.gradio_apps import gradio_apps
+from script.shows.gradio_multipages.gradio_apps import gradio_apps
 
 
 app = FastAPI()
@@ -20,9 +20,9 @@ app = FastAPI()
 for gradio_app in gradio_apps:
     app = gr.mount_gradio_app(app, gradio_app["app"], path="/gradio/" + gradio_app["path"])
 
-templates = Jinja2Templates(directory="script/shows/gradio_multipage/templates")
+templates = Jinja2Templates(directory="script/shows/gradio_multipages/templates")
 
-app.mount("/static", StaticFiles(directory="script/shows/gradio_multipage/static"), name="static")
+app.mount("/static", StaticFiles(directory="script/shows/gradio_multipages/static"), name="static")
 
 @app.get("/")
 @app.get("/app/{path_name:path}")
