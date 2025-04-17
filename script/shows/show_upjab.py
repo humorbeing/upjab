@@ -12,13 +12,13 @@ def show_upjab1():
             print(f_)
         
 
-        target_folder='extra_packages'
+        target_folder='extra_packages/upjab_FirstPackage'
 
         upjab.only_python_files(target_folder=target_folder)
 
 
 def clean_upjab1():
-    target_folder = 'extra_packages_OnlyPythonFile'
+    target_folder = 'extra_packages/upjab_FirstPackage_OnlyPythonFile'
     remove_folder(target_folder)
     print('-------- Cleaned --------')
 
