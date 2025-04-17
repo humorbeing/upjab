@@ -12,7 +12,25 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
+# making this file work in any directory 
+# START
+import os
+folder_path = os.path.dirname(__file__)
+p_list = folder_path.split(os.sep)
+while True:
+    if p_list[-1] == "upjab":
+        break
+    else:
+        p_list.pop()
+
+target_folder = os.sep.join(p_list)
+target_folder = os.path.join(target_folder, "script/shows/gradio_multipages")
+# making this file work in any directory 
+# END
+
 from script.shows.gradio_multipages.gradio_apps import gradio_apps
+
+
 
 
 app = FastAPI()
@@ -20,9 +38,9 @@ app = FastAPI()
 for gradio_app in gradio_apps:
     app = gr.mount_gradio_app(app, gradio_app["app"], path="/gradio/" + gradio_app["path"])
 
-templates = Jinja2Templates(directory="script/shows/gradio_multipages/templates")
+templates = Jinja2Templates(directory=f"{target_folder}/templates")
 
-app.mount("/static", StaticFiles(directory="script/shows/gradio_multipages/static"), name="static")
+app.mount("/static", StaticFiles(directory=f"{target_folder}/static"), name="static")
 
 @app.get("/")
 @app.get("/app/{path_name:path}")

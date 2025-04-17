@@ -1,5 +1,5 @@
 import upjab
-from upjab import remove_folder
+
 
 
 def show_upjab1():
@@ -19,7 +19,7 @@ def show_upjab1():
 
 def clean_upjab1():
     target_folder = 'extra_packages/upjab_FirstPackage_OnlyPythonFile'
-    remove_folder(target_folder)
+    upjab.remove_folder(target_folder)
     print('-------- Cleaned --------')
 
 
