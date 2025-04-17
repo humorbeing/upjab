@@ -1,1 +1,3 @@
--e ./PACKAGES/upjab_FirstPackage
+-e ./extra_packages/upjab_FirstPackage
+-e ./extra_packages/upjab_SecondPackage
+-e ./extra_packages/upjab_gradio

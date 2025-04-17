@@ -1,18 +1,11 @@
 **/__pycache__/
-checkpoints/
-logs/
-**/ckpt/
-.vscode/
-**/fish_images/
-/codes_here
 **/*.egg-info
 
-**/images_big_image_dataset
+**/flagged/
+**/.gradio/
 
 
-**/*.pt
-**/*.pth
-**/flagged
-example_data/videos/fishes/crowd/00000001
+extra_packages/upjab_gradio/upjab_gradio/learn/**/*.png
+extra_packages/upjab_gradio/upjab_gradio/learn/**/*.webp
 
-**/gradio-multipage
+extra_packages/upjab_FirstPackage_OnlyPythonFile
