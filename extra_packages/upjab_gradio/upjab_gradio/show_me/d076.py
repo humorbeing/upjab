@@ -3,6 +3,7 @@ import gradio as gr
 
 client = InferenceClient()
 
+
 def respond(
     prompt: str,
     history,
@@ -20,7 +21,7 @@ def respond(
         top_p=0.9,
         max_tokens=512,
         stream=True,
-        model="HuggingFaceH4/zephyr-7b-beta"
+        model="HuggingFaceH4/zephyr-7b-beta",
     ):
         response["content"] += message.choices[0].delta.content or ""
 

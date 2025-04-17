@@ -1,14 +1,12 @@
-
 import shutil
 import os
-from upjab import get_file_list    
+from upjab import get_file_list
 
 
-def only_python_files(    
+def only_python_files(
     target_folder,
-    file_extends=['py', 'ipynb'],    
-    ):
-
+    file_extends=["py", "ipynb"],
+):
     """
     Copies all files with specified extensions from the target folder to a new folder.
     This function scans the specified target folder for files with the given extensions,
@@ -31,25 +29,26 @@ def only_python_files(
         # `/home/user/projects_OnlyPythonFile`, preserving the folder structure.
     """
 
-    file_list = get_file_list(target_folder=target_folder,file_extends=file_extends)
+    file_list = get_file_list(target_folder=target_folder, file_extends=file_extends)
 
-    print(f'Found {len(file_list)} python files in {target_folder}.')
-    save_folder = target_folder + '_OnlyPythonFile'
-    front_cut = len(target_folder.split('/'))
+    print(f"Found {len(file_list)} python files in {target_folder}.")
+    save_folder = target_folder + "_OnlyPythonFile"
+    front_cut = len(target_folder.split("/"))
     for f_ in file_list:
-        orginal_folder = f_.split('/')[front_cut:-1]
+        orginal_folder = f_.split("/")[front_cut:-1]
         save_folder_path = os.path.join(save_folder, *orginal_folder)
         os.makedirs(save_folder_path, exist_ok=True)
         shutil.copy(f_, save_folder_path)  # dst can be folder
 
-    print(f'Copied {len(file_list)} python files to {save_folder}.')
+    print(f"Copied {len(file_list)} python files to {save_folder}.")
 
-if __name__ == '__main__':
-    target_folder='extra_packages'
+
+if __name__ == "__main__":
+    target_folder = "extra_packages"
     # file_extends=['py', 'ipynb']
-    
+
     only_python_files(
         target_folder=target_folder,
-        # file_extends=file_extends,        
+        # file_extends=file_extends,
     )
     # print('end')

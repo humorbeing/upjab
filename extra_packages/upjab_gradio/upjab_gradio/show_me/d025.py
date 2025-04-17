@@ -10,7 +10,7 @@ import gradio as gr
 #     @gr.on(inputs=[num1, num2, num3], outputs=output)
 #     def sum(a, b, c):
 #         return a + b + c
-    
+
 
 # with gr.Blocks() as demo:
 #   num1 = gr.Number()
@@ -24,13 +24,12 @@ with gr.Blocks() as demo:
     product = gr.Number()
 
     gr.on(
-        [num1.change, num2.change, demo.load], 
-        lambda a, b: a * b, 
-        inputs=[num1, num2], 
-        outputs=product
+        [num1.change, num2.change, demo.load],
+        lambda a, b: a * b,
+        inputs=[num1, num2],
+        outputs=product,
     )
 
 
 if __name__ == "__main__":
     demo.launch()
-  

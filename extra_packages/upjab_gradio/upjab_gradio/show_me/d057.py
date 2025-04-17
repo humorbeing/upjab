@@ -1,11 +1,12 @@
 import gradio as gr
 import time
 
+
 def trim_words(words, lens):
     trimmed_words = []
     time.sleep(5)
     for w, l in zip(words, lens):
-        trimmed_words.append(w[:int(l)])
+        trimmed_words.append(w[: int(l)])
     return [trimmed_words]
 
 
@@ -21,5 +22,5 @@ with gr.Blocks() as demo:
 
 
 if __name__ == "__main__":
-    
+
     demo.launch()

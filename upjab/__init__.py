@@ -1,4 +1,4 @@
-__version__ = '0.1.1'  # 20250417
+__version__ = "0.1.1"  # 20250417
 
 
 from upjab.tool.timer import timer
@@ -11,4 +11,4 @@ from upjab.tool.common import remove_folder
 #     return get_file_list(args, **kwargs)
 
 
-print('From upjab package: do not add heavy modules in __init__.py')
+print("From upjab: do not add heavy modules in __init__.py. It will Load")

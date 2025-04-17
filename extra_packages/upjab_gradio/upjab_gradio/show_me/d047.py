@@ -1,7 +1,9 @@
 import gradio as gr
 
+
 def image_gen(prompt, image):
     return image
+
 
 with gr.Blocks() as demo:
     prompt = gr.Textbox()
