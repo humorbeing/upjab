@@ -1,2 +1,8 @@
 # pip
 # -e ./PACKAGES/upjab_FirstPackage_project
+
+numpy
+panadas
+
+
+opencv-contrib-python
