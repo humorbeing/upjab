@@ -10,17 +10,19 @@ model_file = hf_hub_download(
 
 # model = YOLOv10(model_file)
 model = YOLO("yolo11n.pt")
+
+
 def detection(image, conf_threshold=0.3):
     image = cv2.resize(image, (model.input_width, model.input_height))
     new_image = model.detect_objects(image, conf_threshold)
     return new_image
+
 
 import gradio as gr
 from gradio_webrtc import WebRTC
 
 css = """.my-group {max-width: 600px !important; max-height: 600px !important;}
          .my-column {display: flex !important; justify-content: center !important; align-items: center !important;}"""
-
 
 
 with gr.Blocks(css=css) as demo:

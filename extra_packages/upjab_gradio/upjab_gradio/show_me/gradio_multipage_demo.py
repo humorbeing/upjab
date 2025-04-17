@@ -17,9 +17,6 @@ if debug:
         d000.demo.render()
 
 
-
-
-
 NUM_APPS = 90
 Start_NUM = 1
 # NUM_APPS = 3
@@ -27,28 +24,31 @@ app_list = []
 
 # import importlib.util
 
-SPEC_OS = importlib.util.find_spec('os')
+SPEC_OS = importlib.util.find_spec("os")
 os1 = importlib.util.module_from_spec(SPEC_OS)
 
 
-for i in range(Start_NUM, NUM_APPS+1):
+for i in range(Start_NUM, NUM_APPS + 1):
     if i >= Start_NUM:
         try:
-            app_list.append(importlib.import_module(f"upjab_gradio.show_me.d{i:03d}").demo)
+            app_list.append(
+                importlib.import_module(f"upjab_gradio.show_me.d{i:03d}").demo
+            )
         except:
-            print(f"Module upjab_gradio.show_me.d{i:03d} not found, using default demo.")
-            # app_list.append(importlib.import_module(f"upjab_gradio.show_me.d000").demo)  # gradio.exceptions.DuplicateBlockError: At least one block in this Blocks has already been rendered. 
+            print(
+                f"Module upjab_gradio.show_me.d{i:03d} not found, using default demo."
+            )
+            # app_list.append(importlib.import_module(f"upjab_gradio.show_me.d000").demo)  # gradio.exceptions.DuplicateBlockError: At least one block in this Blocks has already been rendered.
             # SPEC_OS = importlib.util.find_spec("upjab_gradio.show_me.d000")
             # demo_module = importlib.util.module_from_spec(SPEC_OS)
-            # SPEC_OS.loader.exec_module(demo_module)            
+            # SPEC_OS.loader.exec_module(demo_module)
             # app_list.append(demo_module.demo)
-    
 
 
-for i in list(reversed(range(Start_NUM, NUM_APPS+1))):
+for i in list(reversed(range(Start_NUM, NUM_APPS + 1))):
     with demo.route(f"Page {i:03d}"):
-        app_list[i-Start_NUM].render()
-    
+        app_list[i - Start_NUM].render()
+
 
 if __name__ == "__main__":
     demo.launch()

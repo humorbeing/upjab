@@ -6,24 +6,40 @@ from huggingface_hub import InferenceClient
 
 client = InferenceClient(token=os.getenv("HF_TOKEN"))
 
+
 def generate_response(audio):
     gr.Info("Transcribing Audio", duration=5)
     question = client.automatic_speech_recognition(audio).text
 
-    messages = [{"role": "system", "content": ("You are a magic 8 ball."
-                                              "Someone will present to you a situation or question and your job "
-                                              "is to answer with a cryptic adage or proverb such as "
-                                              "'curiosity killed the cat' or 'The early bird gets the worm'."
-                                              "Keep your answers short and do not include the phrase 'Magic 8 Ball' in your response. If the question does not make sense or is off-topic, say 'Foolish questions get foolish answers.'"
-                                              "For example, 'Magic 8 Ball, should I get a dog?', 'A dog is ready for you but are you ready for the dog?'")},
-                {"role": "user", "content": f"Magic 8 Ball please answer this question -  {question}"}]
-    
-    response = client.chat_completion(messages, max_tokens=64, seed=random.randint(1, 5000),
-                                      model="mistralai/Mistral-7B-Instruct-v0.3")
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a magic 8 ball."
+                "Someone will present to you a situation or question and your job "
+                "is to answer with a cryptic adage or proverb such as "
+                "'curiosity killed the cat' or 'The early bird gets the worm'."
+                "Keep your answers short and do not include the phrase 'Magic 8 Ball' in your response. If the question does not make sense or is off-topic, say 'Foolish questions get foolish answers.'"
+                "For example, 'Magic 8 Ball, should I get a dog?', 'A dog is ready for you but are you ready for the dog?'"
+            ),
+        },
+        {
+            "role": "user",
+            "content": f"Magic 8 Ball please answer this question -  {question}",
+        },
+    ]
 
-    response = response.choices[0].message.content.replace("Magic 8 Ball", "").replace(":", "")
+    response = client.chat_completion(
+        messages,
+        max_tokens=64,
+        seed=random.randint(1, 5000),
+        model="mistralai/Mistral-7B-Instruct-v0.3",
+    )
+
+    response = (
+        response.choices[0].message.content.replace("Magic 8 Ball", "").replace(":", "")
+    )
     return response, None, None
-
 
 
 from streamer import ParlerTTSStreamer
@@ -34,7 +50,11 @@ import torch
 from threading import Thread
 
 
-device = "cuda:0" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+device = (
+    "cuda:0"
+    if torch.cuda.is_available()
+    else "mps" if torch.backends.mps.is_available() else "cpu"
+)
 torch_dtype = torch.float16 if device != "cpu" else torch.float32
 
 repo_id = "parler-tts/parler_tts_mini_v0.1"
@@ -50,6 +70,7 @@ feature_extractor = AutoFeatureExtractor.from_pretrained(repo_id)
 
 sampling_rate = model.audio_encoder.config.sampling_rate
 frame_rate = model.audio_encoder.config.frame_rate
+
 
 @spaces.GPU
 def read_response(answer):
@@ -77,7 +98,9 @@ def read_response(answer):
     thread.start()
 
     for new_audio in streamer:
-        print(f"Sample of length: {round(new_audio.shape[0] / sampling_rate, 2)} seconds")
+        print(
+            f"Sample of length: {round(new_audio.shape[0] / sampling_rate, 2)} seconds"
+        )
         yield answer, numpy_to_mp3(new_audio, sampling_rate=sampling_rate)
 
 
@@ -95,9 +118,12 @@ with gr.Blocks() as block:
             answer = gr.Textbox(label="Answer")
             state = gr.State()
         with gr.Row():
-            audio_in = gr.Audio(label="Speak your question", sources="microphone", type="filepath")
+            audio_in = gr.Audio(
+                label="Speak your question", sources="microphone", type="filepath"
+            )
 
-    audio_in.stop_recording(generate_response, audio_in, [state, answer, audio_out])\
-        .then(fn=read_response, inputs=state, outputs=[answer, audio_out])
+    audio_in.stop_recording(
+        generate_response, audio_in, [state, answer, audio_out]
+    ).then(fn=read_response, inputs=state, outputs=[answer, audio_out])
 
 block.launch()

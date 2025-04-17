@@ -27,11 +27,7 @@ with gr.Blocks() as demo:
         else:
             return {status_box: "hungry"}
 
-    gr.Button("Eat").click(
-        fn=eat,
-        inputs=food_box,
-        outputs=[food_box, status_box]
-    )
+    gr.Button("Eat").click(fn=eat, inputs=food_box, outputs=[food_box, status_box])
 
 
 if __name__ == "__main__":

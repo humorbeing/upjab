@@ -1,13 +1,14 @@
 import gradio as gr
 
-example_code = '''
+example_code = """
 Here's the code I generated:
 
 def greet(x):
     return f"Hello, {x}!"
 
 Is this correct?
-'''
+"""
+
 
 def chat(message, history):
     if message == "Yes, that's correct.":
@@ -18,14 +19,15 @@ def chat(message, history):
             "content": example_code,
             "options": [
                 {"value": "Yes, that's correct.", "label": "Yes"},
-                {"value": "No"}
-                ]
-            }
+                {"value": "No"},
+            ],
+        }
+
 
 demo = gr.ChatInterface(
     chat,
     type="messages",
-    examples=["Write a Python function that takes a string and returns a greeting."]
+    examples=["Write a Python function that takes a string and returns a greeting."],
 )
 
 if __name__ == "__main__":

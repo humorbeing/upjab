@@ -1,5 +1,6 @@
 import gradio as gr
 
+
 def count_images(message, history):
     num_images = len(message["files"])
     total_images = 0
@@ -8,14 +9,13 @@ def count_images(message, history):
             total_images += 1
     return f"You just uploaded {num_images} images, total uploaded: {total_images+num_images}"
 
+
 demo = gr.ChatInterface(
-    fn=count_images, 
-    type="messages", 
-    examples=[
-        {"text": "No files", "files": []}
-    ], 
+    fn=count_images,
+    type="messages",
+    examples=[{"text": "No files", "files": []}],
     multimodal=True,
-    textbox=gr.MultimodalTextbox(file_count="multiple", file_types=["image"])
+    textbox=gr.MultimodalTextbox(file_count="multiple", file_types=["image"]),
 )
 
 

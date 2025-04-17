@@ -21,7 +21,7 @@ document.addEventListener('keypress', shortcuts, false);
 with gr.Blocks(head=shortcut_js) as demo:
     action_button = gr.Button(value="Name", elem_id="my_btn")
     textbox = gr.Textbox()
-    action_button.click(lambda : "button pressed", None, textbox)
+    action_button.click(lambda: "button pressed", None, textbox)
 
 
 if __name__ == "__main__":
