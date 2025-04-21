@@ -1,23 +1,25 @@
-import upjab
+
+# import upjab.tool  # change to upjab.__init__.py
+import upjab # works. looks like loading cannot be avoided
 
 
 def show_upjab1():
-    with upjab.timer:
+    with upjab.tool.timer:
 
         target_folder = "data/text"
 
-        file_list = upjab.get_file_list(target_folder, file_extends=["txt"])
+        file_list = upjab.tool.get_file_list(target_folder, file_extends=["txt"])
         for f_ in file_list:
             print(f_)
 
         target_folder = "extra_packages/upjab_FirstPackage"
 
-        upjab.only_python_files(target_folder=target_folder)
+        upjab.tool.only_python_files(target_folder=target_folder)
 
 
 def clean_upjab1():
     target_folder = "extra_packages/upjab_FirstPackage_OnlyPythonFile"
-    upjab.remove_folder(target_folder)
+    upjab.tool.remove_folder(target_folder)
     print("-------- Cleaned --------")
 
 
