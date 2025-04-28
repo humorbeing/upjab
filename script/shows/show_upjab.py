@@ -15,6 +15,10 @@ def show_upjab1():
         target_folder = "extra_packages/upjab_FirstPackage"
 
         upjab.tool.only_python_files(target_folder=target_folder)
+        file_path = "data/configs/learn_yaml.yaml"
+        data = upjab.tool.yaml(file_path)
+        print(data)
+        print("Data loaded successfully.")
 
 
 def clean_upjab1():

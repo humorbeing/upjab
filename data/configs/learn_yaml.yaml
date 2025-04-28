@@ -1,0 +1,359 @@
+lr: 1e-5  # not working in yaml
+lr1: 0.00001
+foo: bar
+pleh: help
+stuff:
+  foo: bar
+  bar: foo
+
+
+foo1: this is not a normal string
+bar: this is not a normal string\n
+
+foo2:
+  bar:
+    - bar
+    - rab
+    - plop
+
+items:
+  - 1
+  - 2
+names:
+  - one
+  - two
+
+
+New document:
+  bar : foo
+  foo : bar
+New document:
+  one : two
+  three : four
+
+
+countries:
+- GB # Great Britain
+- IE # Ireland
+- FR # France
+- DE # Denmark
+- NO # Norway
+- 'NO' # Norway
+
+
+message01: YAML & JSON # breaks as a & is a special character
+message02: "YAML & JSON" # Works as the string is quoted
+
+message: >
+ even though
+ it looks like
+ this is a multiline message,
+ it is actually not
+
+message0: >+
+ This block line
+ Will be interpreted as a single
+ line with a newline character at the 
+ end
+
+message1: >-
+ This block line
+ Will be interpreted as a single
+ line without the newline character at the
+ end
+
+
+
+# ---
+# key: value [mapping]
+company: spacelift
+# key: value is an array [sequence]
+domain:
+ - devops
+ - devsecops
+tutorial:
+  - yaml:
+      name: "YAML Ain't Markup Language" #string [literal]
+      type: awesome #string [literal]
+      born: 2001 #number [literal]
+  - json:
+      name: JavaScript Object Notation #string [literal]
+      type: great #string [literal]
+      born: 2001 #number [literal]
+  - xml:
+      name: Extensible Markup Language #string [literal]
+      type: good #string [literal]
+      born: 1996 #number [literal]
+author: omkarbirade
+published: true
+
+
+model:
+  name: 'osnet_ain_x1_0'
+  pretrained: True
+
+data:
+  type: 'image'
+  sources: ['market1501']
+  targets: ['market1501', 'dukemtmcreid']
+  height: 256
+  width: 128
+  combineall: False
+  transforms: ['random_flip', 'color_jitter']
+  save_dir: 'log/osnet_ain_x1_0_market1501_softmax_cosinelr'
+
+loss:
+  name: 'softmax'
+  softmax:
+    label_smooth: True
+
+train:
+  optim: 'amsgrad'
+  lr: 0.0015
+  max_epoch: 100
+  batch_size: 64
+  fixbase_epoch: 10
+  open_layers: ['classifier']
+  lr_scheduler: 'cosine'
+
+test:
+  batch_size: 300
+  dist_metric: 'cosine'
+  normalize_feature: False
+  evaluate: False
+  eval_freq: -1
+  rerank: False
+
+
+data : 
+    name     : $dataset
+    datapath : $datapath
+    out_size : $out_size
+    normalize: 
+        mean : [0.485, 0.456, 0.406]
+        std  : [0.229, 0.256, 0.225]
+
+out_size : 
+    - 256
+    - 256
+
+metrics : 
+    num_workers   : $num_workers
+    functions : $metric_functions
+
+model : 
+    name     : $method
+    backbone : $backbone
+    out_size : $out_size
+    ishalf   : $half
+    mparams  : $mparams
+
+testloaderparams : 
+    batch_size : $test_batch_size
+    shuffle    : False
+    num_workers: 16
+
+temploaderparams : 
+    batch_size : 32
+    shuffle    : False
+    num_workers: 16
+
+tpath : template
+rpath : results
+
+
+dataset: MVTec_AD
+backbone: Wide_ResNet101_2
+temp_size: None
+temp_type: ALL
+test_batch_size: 32
+metric_functions : 
+- img_AUC
+- pix_AUC
+- PRO
+categories:
+- carpet
+- grid
+- leather
+- tile
+- wood
+- bottle
+- cable
+- capsule
+- hazelnut
+- metal_nut
+- pill
+- screw
+- toothbrush
+- transistor
+- zipper
+mparams:
+  bottle: L1:5x3_a=0.3_l=1|L2:5x3_a=0.3_l=1|L3:7x3_a=0.3_l=0.8;img_AUC:clean|pix_AUC:blur_s=4.1_k=39|PRO:clean
+  cable: L1:13x7_a=0.7_l=1|L2:5x5_a=0.7_l=0.8|L3:7x1_a=0.3_l=0.8;img_AUC:blur_s=5.5_k=39|pix_AUC:blur_s=8.600000000000001_k=61|PRO:clean
+  capsule: L1:13x7_a=0.5_l=1|L2:9x5_a=0.5_l=0.5|L3:7x3_a=0.3_l=0.3;img_AUC:clean|pix_AUC:blur_s=7.800000000000001_k=61|PRO:blur_s=3.6_k=11
+  carpet: L1:7x3_a=0.7_l=1|L2:9x1_a=0.3_l=0.8|L3:3x1_a=0.3_l=0.5;img_AUC:blur_s=5.5_k=35|pix_AUC:clean|PRO:blur_s=3.0_k=11
+  grid: L1:13x3_a=0.7_l=1|L2:9x1_a=0.7_l=0.5|L3:7x1_a=0.3_l=0.3;img_AUC:clean|pix_AUC:clean|PRO:clean
+  hazelnut: L1:13x3_a=0.7_l=1|L2:9x5_a=0.7_l=0.5|L3:7x3_a=0.3_l=0.8;img_AUC:clean|pix_AUC:clean|PRO:clean
+  leather: L1:11x3_a=0.5_l=1|L2:9x3_a=0.3_l=1|L3:7x3_a=0.3_l=0.3;img_AUC:clean|pix_AUC:clean|PRO:clean
+  metal_nut: L1:13x5_a=0.5_l=1|L2:9x5_a=0.3_l=0.5|L3:7x3_a=0.3_l=0.8;img_AUC:clean|pix_AUC:blur_s=15.0_k=61|PRO:clean
+  pill: L1:11x5_a=0.5_l=1|L2:9x1_a=0.7_l=0.5|L3:7x1_a=0.3_l=0.5;img_AUC:mp_k=25|pix_AUC:blur_s=15.0_k=61|PRO:clean
+  screw: L1:5x3_a=0.5_l=1|L2:5x3_a=0.7_l=0.8|L3:7x3_a=0.3_l=0.3;img_AUC:clean|pix_AUC:blur_s=3.3_k=45|PRO:blur_s=3.1_k=17
+  tile: L1:13x7_a=0.3_l=1|L2:7x5_a=0.3_l=0.5|L3:5x3_a=0.3_l=0.5;img_AUC:clean|pix_AUC:clean|PRO:clean
+  toothbrush: L1:13x3_a=0.3_l=1|L2:9x5_a=0.3_l=0.8|L3:7x3_a=0.3_l=0.5;img_AUC:clean|pix_AUC:blur_s=3.0_k=11|PRO:clean
+  transistor: L1:13x5_a=0.3_l=1|L2:5x3_a=0.5_l=0.5|L3:5x1_a=0.3_l=0.8;img_AUC:blur_s=5.1_k=31|pix_AUC:blur_s=15.0_k=61|PRO:blur_s=6.6_k=39
+  wood: L1:7x3_a=0.7_l=1|L2:5x3_a=0.7_l=0.8|L3:7x1_a=0.7_l=0.3;img_AUC:clean|pix_AUC:clean|PRO:clean
+  zipper: L1:13x5_a=0.3_l=1|L2:7x5_a=0.7_l=1|L3:7x1_a=0.7_l=0.3;img_AUC:mp_k=11|pix_AUC:blur_s=10.4_k=61|PRO:blur_s=6.0_k=31
+
+
+
+
+carpet:
+  test:
+    color: [8, 13, 15, 17]
+    cut: [0, 3, 4, 9]
+    hole: [1, 7, 10, 15]
+    metal_contamination: [0, 7, 13, 14]
+    thread: [1, 6, 8, 15]
+    good: [0, 1]
+grid:
+  test:
+    bent: [0, 1, 2, 3]
+    broken: [0, 1, 2, 3]
+    glue: [0, 1, 2, 3]
+    metal_contamination: [0, 1, 2, 3]
+    thread: [0, 1, 2, 3]
+    good: [0, 1]
+leather:
+  test:
+    color: [0, 1, 2, 3]
+    cut: [0, 1, 2, 3]
+    fold: [0, 1, 2, 3]
+    glue: [0, 1, 2, 3]
+    poke: [0, 1, 2, 3]
+    good: [0, 1]
+tile:
+  test:
+    crack: [0, 1, 2, 3]
+    glue_strip: [0, 1, 2, 3]
+    gray_stroke: [0, 1, 2, 3]
+    oil: [0, 1, 2, 3]
+    rough: [0, 1, 2, 3]
+    good: [0, 1]
+wood:
+  test:
+    color: [1, 2, 3, 6]
+    scratch: [0, 2, 5, 16]
+    hole: [0, 2, 4, 6]
+    liquid: [1, 2, 7, 8]
+    combined: [0, 3, 4, 7]
+    good: [0, 1]
+bottle:
+  test:
+    broken_large: [0, 1, 2, 3, 4, 5]
+    broken_small: [0, 1, 2, 3, 4, 5]
+    contamination: [0, 1, 2, 3, 4, 5]
+    good: [0, 1, 2, 3]
+cable:
+  test:
+    bent_wire: [0, 1, 2]
+    cable_swap: [0, 1, 2]
+    combined: [0, 1, 2]
+    cut_inner_insulation: [0, 1, 2]
+    cut_outer_insulation: [0, 1]
+    missing_cable: [0, 1]
+    missing_wire: [0, 1]
+    poke_insulation: [0, 1]
+    good: [0, 1]
+capsule:
+  test:
+    crack: [0, 1, 2, 3]
+    faulty_imprint: [0, 1, 2, 3]
+    poke: [0, 1, 2, 3]
+    scratch: [0, 1, 2, 3]
+    squeeze: [0, 1, 2, 3]
+    good: [0, 1]
+hazelnut:
+  test:
+    crack: [0, 1, 2, 3, 4]
+    cut: [0, 1, 2, 3, 4]
+    hole: [0, 1, 2, 3, 4]
+    print: [0, 1, 2, 3, 4]
+    good: [0, 1]
+metal_nut:
+  test:
+    bent: [0, 1, 2, 3, 4]
+    color: [0, 1, 2, 3, 4]
+    flip: [0, 1, 2, 3, 4]
+    scratch: [0, 1, 2, 3, 4]
+    good: [0, 1]
+pill:
+  test:
+    color: [0, 1, 2]
+    combined: [0, 1, 2]
+    contamination: [0, 1, 2]
+    crack: [0, 1, 2]
+    faulty_imprint: [0, 1, 2]
+    pill_type: [0, 1, 2]
+    scratch: [0, 1]
+    good: [0, 1]
+screw:
+  test:
+    manipulated_front: [0, 1, 2, 3]
+    scratch_head: [0, 1, 2, 3]
+    scratch_neck: [0, 1, 2, 3]
+    thread_side: [0, 1, 2, 3]
+    thread_top: [0, 1, 2, 3]
+    good: [0, 1]
+toothbrush:
+  test:
+    defective: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+    good: [0, 1, 2, 3]
+transistor:
+  test:
+    bent_lead: [0, 1, 2, 3, 4]
+    cut_lead: [0, 1, 2, 3, 4]
+    damaged_case: [0, 1, 2, 3, 4]
+    misplaced: [0, 1, 2, 3, 4]
+    good: [0, 1]
+zipper:
+  test:
+    broken_teeth: [0, 1, 2]
+    combined: [0, 1, 2]
+    fabric_border: [0, 1, 2]
+    fabric_interior: [0, 1, 2]
+    rough: [0, 1, 2]
+    split_teeth: [0, 1, 2]
+    squeezed_teeth: [0, 1]
+    good: [0, 1]
+
+
+Collections:
+  - Name: C3D
+    README: configs/recognition/c3d/README.md
+    Paper:
+      URL: https://arxiv.org/abs/1412.0767
+      Title: 'Learning Spatiotemporal Features with 3D Convolutional Networks'
+
+Models:
+  - Name: c3d_sports1m-pretrained_8xb30-16x1x1-45e_ucf101-rgb
+    Config: configs/recognition/c3d/c3d_sports1m-pretrained_8xb30-16x1x1-45e_ucf101-rgb.py
+    In Collection: C3D
+    Metadata:
+      Architecture: c3d
+      Batch Size: 30
+      Epochs: 45
+      FLOPs: 38.5G
+      Parameters: 78.4M
+      Pretrained: sports1m
+      Resolution: 112x112
+      Training Data: UCF101
+      Training Resources: 8 GPUs
+    Modality: RGB
+    Results:
+    - Dataset: UCF101
+      Task: Action Recognition
+      Metrics:
+        Top 1 Accuracy: 83.08
+        Top 5 Accuracy: 95.93
+    Training Log: https://download.openmmlab.com/mmaction/v1.0/recognition/c3d/c3d_sports1m-pretrained_8xb30-16x1x1-45e_ucf101-rgb/c3d_sports1m-pretrained_8xb30-16x1x1-45e_ucf101-rgb.log
+    Weights: https://download.openmmlab.com/mmaction/v1.0/recognition/c3d/c3d_sports1m-pretrained_8xb30-16x1x1-45e_ucf101-rgb/c3d_sports1m-pretrained_8xb30-16x1x1-45e_ucf101-rgb_20220811-31723200.pth

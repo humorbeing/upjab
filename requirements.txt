@@ -4,3 +4,4 @@
 gradio
 fastapi
 uvicorn[standard]
+PyYAML
