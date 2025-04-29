@@ -19,14 +19,21 @@ class Show:
                 break
             counter += 1
             print(">>> Upjab show started. <<<")
+            
             for s in self.show_list:
                 s()
                 time.sleep(break_time)
-
+            
+            print(">>> Upjab show finished. <<<")
             print("-->>> Upjab clean started. <<<--")
+            
             for c in self.clean_list:
                 c()
                 time.sleep(break_time)
+            
+            print("-->>> Upjab clean finished. <<<--")
+            print("> > > Upjab show is OVER. < < <")
+            input("Press Ctrl+C to End. OR, Press Enter to continue...")
 
     def show(self, break_time=1):
 
