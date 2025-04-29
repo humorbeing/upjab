@@ -1,5 +1,5 @@
 __version__ = "0.1.1"  # 20250417
-
+__version__ = "0.1.2"  # 20250428
 
 from upjab import tool
 

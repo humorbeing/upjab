@@ -51,4 +51,33 @@ parser.add_argument('--half', action='store_true', help='use FP16 half-precision
 parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
 parser.add_argument('--vid-stride', type=int, default=1, help='video frame-rate stride')
 parser.add_argument('--retina-masks', action='store_true', help='whether to plot masks in native resolution')
+
+
+parser.add_argument("--config", type=str, default="configs/pretrain.yaml", help="Path to the config file.")
+parser.add_argument('-c', '--checkpoint', default='checkpoint', type=str, metavar='PATH', help='checkpoint directory')
+parser.add_argument('-p', '--pretrained', default='checkpoint', type=str, metavar='PATH', help='pretrained checkpoint directory')
+parser.add_argument('-r', '--resume', default='', type=str, metavar='FILENAME', help='checkpoint to resume (file name)')
+parser.add_argument('-e', '--evaluate', default='', type=str, metavar='FILENAME', help='checkpoint to evaluate (file name)')
+parser.add_argument('-freq', '--print_freq', default=100)
+parser.add_argument('-ms', '--selection', default='latest_epoch.bin', type=str, metavar='FILENAME', help='checkpoint to finetune (file name)')
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 args = parser.parse_args()
