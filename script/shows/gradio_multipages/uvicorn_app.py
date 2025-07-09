@@ -19,7 +19,7 @@ import os
 folder_path = os.path.dirname(__file__)
 p_list = folder_path.split(os.sep)
 while True:
-    if p_list[-1] == "upjab_project":
+    if p_list[-1] == "upjab":
         break
     else:
         p_list.pop()
