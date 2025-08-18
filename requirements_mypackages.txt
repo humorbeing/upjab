@@ -1,3 +1,4 @@
 -e ./extra_packages/upjab_FirstPackage
 -e ./extra_packages/upjab_SecondPackage
 -e ./extra_packages/upjab_gradio_simple
+-e ./extra_packages/ThreeThreadsTool_HeavyModel_On_VideoStream_Tool
