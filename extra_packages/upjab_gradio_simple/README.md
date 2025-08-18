@@ -1,7 +1,4 @@
 
- 
-
-1
 
 requirements.txt example
 

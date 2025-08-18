@@ -4,9 +4,10 @@
 **/flagged/
 **/.gradio/
 
-**/_CODE_SOUP/
+**/__CODE_SOUP/
 
-extra_packages/upjab_gradio/upjab_gradio/learn/**/*.png
-extra_packages/upjab_gradio/upjab_gradio/learn/**/*.webp
+extra_packages/upjab_gradio_simple/upjab_gradio_simple/learn/**/*.png
+extra_packages/upjab_gradio_simple/upjab_gradio_simple/learn/**/*.webp
 
 extra_packages/upjab_FirstPackage_OnlyPythonFile
+

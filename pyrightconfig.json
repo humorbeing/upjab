@@ -1,0 +1,16 @@
+{
+      "exclude": [
+      // "**/node_modules",
+      // "**/__pycache__",
+      // "src/experimental",
+      // "src/typestubs",
+      "__CODE_SOUP",
+      ],
+      "ignore": [
+      // "**/node_modules",
+      // "**/__pycache__",
+      // "src/experimental",
+      // "src/typestubs",
+      "__CODE_SOUP",
+      ],
+}

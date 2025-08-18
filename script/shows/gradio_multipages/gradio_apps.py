@@ -9,19 +9,19 @@ for i in range(Start_NUM, NUM_APPS + 1):
     if i >= Start_NUM:
         try:
             app_list.append(
-                importlib.import_module(f"upjab_gradio.show_me.d{i:03d}").demo
+                importlib.import_module(f"upjab_gradio_simple.show_me.d{i:03d}").demo
             )
         except:
             print(
-                f"Module upjab_gradio.show_me.d{i:03d} not found, using default demo."
+                f"Module upjab_gradio_simple.show_me.d{i:03d} not found, using default demo."
             )
-            app_list.append(importlib.import_module(f"upjab_gradio.show_me.d000").demo)
+            app_list.append(importlib.import_module(f"upjab_gradio_simple.show_me.d000").demo)
 
 
 gradio_apps = []
 
 
-from upjab_gradio.show_me import main_page
+from upjab_gradio_simple.show_me import main_page
 
 
 gradio_apps.append({"title": f"Main Page", "app": main_page.demo, "path": f"page_main"})
