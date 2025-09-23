@@ -1,4 +1,7 @@
 lr: 0.0015
+lists:
+  1e-10
+  1
 model:
   name: 'osnet_ain_x1_0'
   pretrained: True

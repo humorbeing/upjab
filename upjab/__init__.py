@@ -11,7 +11,7 @@ ROOT = os.path.dirname(__file__)
 ROOT = os.path.dirname(ROOT)
 
 # Absolute Path (AP) function
-def AP(relative_path):    
+def ARP(relative_path):    
     return os.path.join(ROOT, relative_path)
 
 # from xxx import AP
