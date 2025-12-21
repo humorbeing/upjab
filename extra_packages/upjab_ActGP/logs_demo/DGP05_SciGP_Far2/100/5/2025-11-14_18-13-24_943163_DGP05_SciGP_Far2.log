@@ -1,0 +1,95 @@
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - num_trainval: 100
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - is_random_sample: True
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - which_FeatureAugmentation: 3
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - FeatureAugmentation_Runs: 2
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - x_transformer_type: standardize
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - y_transformer_type: standardize
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - num_trainval_slice: 40
+2025-11-14 18:13:24.948 | INFO     | __main__:log_results:110 - EPOCH: 500
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:110 - exp_name: DGP05_SciGP_Far2
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:110 - random_round_num: 5
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:113 - Pt_in [Pa] | explained_variance_score: 0.228234
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:113 - Pt_in [Pa] | r2_score: 0.226138
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:113 - Pt_in [Pa] | d2_absolute_error_score: 0.109751
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:113 - Pt_in [Pa] | d2_pinball_score: 0.109751
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:113 - Pt_in [Pa] | d2_tweedie_score: 0.226138
+2025-11-14 18:13:24.949 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_absolute_error: 0.607214
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | median_absolute_error: 0.447288
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_squared_error: 0.696372
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | rmse: 0.834489
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_squared_log_error: 0.126297
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | rmsle: 0.355384
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_absolute_percentage_error: 0.596025
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | max_error: 3.357999
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_pinball_loss(alpha=0.5): 0.303607
+2025-11-14 18:13:24.950 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_poisson_deviance: 0.706201
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_gamma_deviance: 1.466261
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_in [Pa] | mean_tweedie_deviance(power=0.0): 0.696372
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | explained_variance_score: 1.000000
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | r2_score: 1.000000
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | d2_absolute_error_score: 0.999976
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | d2_pinball_score: 0.999976
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | d2_tweedie_score: 1.000000
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_absolute_error: 0.597903
+2025-11-14 18:13:24.951 | INFO     | __main__:log_results:113 - Pt_out [Pa] | median_absolute_error: 0.478861
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_squared_error: 0.653220
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | rmse: 0.808220
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_squared_log_error: 0.000000
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | rmsle: 0.000018
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_absolute_percentage_error: 0.000013
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | max_error: 2.824808
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_pinball_loss(alpha=0.5): 0.298951
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_poisson_deviance: 0.000012
+2025-11-14 18:13:24.952 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_gamma_deviance: 0.000000
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Pt_out [Pa] | mean_tweedie_deviance(power=0.0): 0.653220
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | explained_variance_score: 0.998052
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | r2_score: 0.998022
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | d2_absolute_error_score: 0.969468
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | d2_pinball_score: 0.969468
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | d2_tweedie_score: 0.998022
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | mean_absolute_error: 0.056918
+2025-11-14 18:13:24.953 | INFO     | __main__:log_results:113 - Torque [N m] | median_absolute_error: 0.033552
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | mean_squared_error: 0.011629
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | rmse: 0.107840
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | mean_squared_log_error: 0.000314
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | rmsle: 0.017726
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | mean_absolute_percentage_error: 0.013299
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | max_error: 0.536436
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | mean_pinball_loss(alpha=0.5): 0.028459
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | mean_poisson_deviance: 0.002187
+2025-11-14 18:13:24.954 | INFO     | __main__:log_results:113 - Torque [N m] | mean_gamma_deviance: 0.000501
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Torque [N m] | mean_tweedie_deviance(power=0.0): 0.011629
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | explained_variance_score: 0.985451
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | r2_score: 0.985147
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | d2_absolute_error_score: 0.906658
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | d2_pinball_score: 0.906658
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | d2_tweedie_score: 0.985147
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_absolute_error: 1.018957
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | median_absolute_error: 0.563069
+2025-11-14 18:13:24.955 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_squared_error: 2.657373
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | rmse: 1.630145
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_squared_log_error: 0.000562
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | rmsle: 0.023703
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_absolute_percentage_error: 0.013949
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | max_error: 5.767371
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_pinball_loss(alpha=0.5): 0.509479
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_poisson_deviance: 0.038951
+2025-11-14 18:13:24.956 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_gamma_deviance: 0.000586
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency [%] | mean_tweedie_deviance(power=0.0): 2.657373
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | explained_variance_score: 0.985725
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | r2_score: 0.985623
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | d2_absolute_error_score: 0.910228
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | d2_pinball_score: 0.910228
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | d2_tweedie_score: 0.985623
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_absolute_error: 0.986889
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | median_absolute_error: 0.621757
+2025-11-14 18:13:24.957 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_squared_error: 2.646202
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | rmse: 1.626715
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_squared_log_error: 0.000492
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | rmsle: 0.022171
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_absolute_percentage_error: 0.013111
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | max_error: 7.452504
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_pinball_loss(alpha=0.5): 0.493445
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_poisson_deviance: 0.036320
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_gamma_deviance: 0.000511
+2025-11-14 18:13:24.958 | INFO     | __main__:log_results:113 - Efficiency (Pt_out - Pt_in) | mean_tweedie_deviance(power=0.0): 2.646202

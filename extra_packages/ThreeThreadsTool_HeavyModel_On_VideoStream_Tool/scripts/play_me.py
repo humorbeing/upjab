@@ -47,4 +47,5 @@ if __name__ == "__main__":
     video_source = 0
     # video_source = 'rtmp://115.22.172.73/live/stream'
     # video_source = 'data/KakaoTalk_20250226_121532508.mp4'
+    video_source = 'data/video/v01.avi'
     threadBoth(video_source)
