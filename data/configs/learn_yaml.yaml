@@ -1,5 +1,6 @@
 lr: 1e-5  # not working in yaml
 lr1: 0.00001
+lists: [1e-10, 1]
 foo: bar
 pleh: help
 stuff:
