@@ -10,8 +10,8 @@ ROOT = os.path.dirname(__file__)
 # ROOT = os.path.dirname(ROOT)
 ROOT = os.path.dirname(ROOT)
 
-# Absolute Path (AP) function
-def ARP(relative_path):    
+# Absolute Path (AP) to ROOT function
+def AP(relative_path):    
     return os.path.join(ROOT, relative_path)
 
 # from xxx import AP
