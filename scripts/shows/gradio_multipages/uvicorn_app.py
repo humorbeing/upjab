@@ -25,11 +25,11 @@ while True:
         p_list.pop()
 
 target_folder = os.sep.join(p_list)
-target_folder = os.path.join(target_folder, "script/shows/gradio_multipages")
+target_folder = os.path.join(target_folder, "scripts/shows/gradio_multipages")
 # making this file work in any directory
 # END
 
-from script.shows.gradio_multipages.gradio_apps import gradio_apps
+from scripts.shows.gradio_multipages.gradio_apps import gradio_apps
 
 
 app = FastAPI()

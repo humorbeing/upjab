@@ -3,7 +3,7 @@ import importlib
 
 debug = False
 
-from upjab_gradio.show_me import main_page
+from upjab_gradio_simple.show_me import main_page
 
 with gr.Blocks() as demo:
     main_page.demo.render()
@@ -11,13 +11,14 @@ with gr.Blocks() as demo:
 # with demo.route("Second Page"):
 #     second_page.demo.render()
 if debug:
-    from upjab_gradio.show_me import d000
+    from upjab_gradio_simple.show_me import d000
 
     with demo.route("1 Page"):
         d000.demo.render()
 
 
 NUM_APPS = 90
+# NUM_APPS = 46
 Start_NUM = 1
 # NUM_APPS = 3
 app_list = []
@@ -32,7 +33,7 @@ for i in range(Start_NUM, NUM_APPS + 1):
     if i >= Start_NUM:
         try:
             app_list.append(
-                importlib.import_module(f"upjab_gradio.show_me.d{i:03d}").demo
+                importlib.import_module(f"upjab_gradio_simple.show_me.d{i:03d}").demo
             )
         except:
             print(

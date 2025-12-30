@@ -6,6 +6,6 @@
 # demo.launch()
 
 
-from upjab_gradio import show
+from upjab_gradio_simple import show
 
 show()
