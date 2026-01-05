@@ -48,7 +48,9 @@ for i in range(Start_NUM, NUM_APPS + 1):
 
 for i in list(reversed(range(Start_NUM, NUM_APPS + 1))):
     with demo.route(f"Page {i:03d}"):
-        app_list[i - Start_NUM].render()
+        ind = i - Start_NUM
+        if ind < len(app_list):
+            app_list[ind].render()
 
 
 if __name__ == "__main__":
