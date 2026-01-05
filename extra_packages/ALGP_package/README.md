@@ -48,6 +48,10 @@ ALGP (Active Learning with Gaussian Process) implements an uncertainty-based act
 ### From Source
 
 ```bash
+# Conda virtual env
+conda create --name ALGP-env python=3.10 -y
+conda activate ALGP-env
+
 # Clone the repository
 cd /path/to/ALGP_package
 
@@ -60,7 +64,8 @@ pip install -e .
 The package requires:
 - Python >= 3.7
 - scikit-learn
-
+- omegaconf
+  
 All dependencies will be installed automatically.
 
 ## Quick Start
@@ -242,7 +247,8 @@ ALGP_package/
 
 - Python >= 3.7
 - scikit-learn
-
+- omegaconf
+  
 Install via:
 ```bash
 pip install -r requirements.txt

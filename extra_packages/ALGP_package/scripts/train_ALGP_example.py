@@ -25,6 +25,7 @@ y_pred, y_std = model.predict(x_test, return_std=True)
 y_pred = reverse_y_fn(y_pred)
 logs = evaluate_result(y_true=y_true, y_pred=y_pred)
 
+
 MAPE = float(logs[-6].split()[-1])*100
 
 print(f'''
