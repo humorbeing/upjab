@@ -13,6 +13,7 @@ target_dir = os.path.join(save_folder, "shows", "gradio_multipages")
 
 
 # cmd: uvicorn --app-dir  ./two/app app:app
-subprocess.run(["uvicorn", "--app-dir", f"{target_dir}", "uvicorn_app:app"])
+# subprocess.run(["uvicorn", "--app-dir", f"{target_dir}", "uvicorn_app:app"])
+subprocess.run(["python", "-m", "uvicorn", "--app-dir", f"{target_dir}", "uvicorn_app:app"])
 
 print("done")

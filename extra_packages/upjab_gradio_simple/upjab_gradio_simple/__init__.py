@@ -12,6 +12,6 @@ __version__ = "0.0.1"
 
 
 def show():
-    from upjab_gradio.show_me.gradio_multipage_demo import demo
+    from upjab_gradio_simple.show_me.gradio_multipage_demo import demo
 
     demo.launch()
