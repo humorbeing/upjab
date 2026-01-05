@@ -5,7 +5,7 @@ from ALGP.utils import pop_selected_list
 def ALGP_training_set(
     x_train: np.ndarray,
     y_train: np.ndarray,
-    index_selection_target: int = 0,
+    ActiveLearning_Target_Index: int = 0,
     Budget_Training_Sample: int = 50,
     NUM_INIT_SAMPLE: int = 10,
     TOP_K: int = 1,
@@ -57,7 +57,7 @@ def ALGP_training_set(
             x_evaluate = remaining[:,:len_x_feature]
 
             model = get_gp_model(gp_config_path)
-            model.fit(x_training, y_training[:, index_selection_target])
+            model.fit(x_training, y_training[:, ActiveLearning_Target_Index])
     
             
             y_mean, y_std = model.predict(x_evaluate, return_std=True)  

@@ -7,7 +7,7 @@ import numpy as np
 def ALGP(
     x_train: np.ndarray,
     y_train: np.ndarray,
-    index_selection_target = 0,
+    ActiveLearning_Target_Index = 0,
     Budget_Training_Sample = 50,
     NUM_INIT_SAMPLE=10,
     TOP_K = 1,
@@ -17,7 +17,7 @@ def ALGP(
     train_dataset = ALGP_training_set(
         x_train=x_train,
         y_train=y_train,
-        index_selection_target = index_selection_target,
+        ActiveLearning_Target_Index = ActiveLearning_Target_Index,
         Budget_Training_Sample = Budget_Training_Sample,
         NUM_INIT_SAMPLE=NUM_INIT_SAMPLE,
         TOP_K = TOP_K,

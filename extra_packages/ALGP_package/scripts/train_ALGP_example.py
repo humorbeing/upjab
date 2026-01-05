@@ -14,10 +14,10 @@ reverse_y_fn = dataset['reverse_y_fn']  # function to reverse y_pred standardiza
 model = ALGP(
     x_train=x_train,
     y_train=y_train,    
-    index_selection_target = 3,
-    Budget_Training_Sample = 50,
-    NUM_INIT_SAMPLE=10,
-    TOP_K = 1,
+    ActiveLearning_Target_Index = 3,  # Use 3rd output for sample selection in active learning
+    Budget_Training_Sample = 50,  # Use only 50 samples
+    NUM_INIT_SAMPLE=10,  # Start with 10 random samples
+    TOP_K = 1,  # Select 1 sample per iteration
     gp_config_path = AP('configs/gp-l_bfgs_v01.yaml'),
 )
 
@@ -26,4 +26,4 @@ y_pred = reverse_y_fn(y_pred)
 logs = evaluate_result(y_true=y_true, y_pred=y_pred)
 
 
-print('break')
+print('End of ALGP example training script.')

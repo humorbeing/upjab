@@ -15,7 +15,4 @@ data/Pump_data/in_out
 
 # extra_packages/upjab_FirstPackage_OnlyPythonFile
 
-**/logs/
-**/logs_W_random/
-**/assets/
 
