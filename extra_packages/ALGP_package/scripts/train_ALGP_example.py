@@ -25,5 +25,24 @@ y_pred, y_std = model.predict(x_test, return_std=True)
 y_pred = reverse_y_fn(y_pred)
 logs = evaluate_result(y_true=y_true, y_pred=y_pred)
 
+MAPE = float(logs[-6].split()[-1])*100
+
+print(f'''
+Dataset: x has 3 features, y has 4 outputs. 4th output (y[3]) is used for active learning sample selection.
+Dataset has 1000 samples. 900 samples are used for training, 100 samples are used for testing.
+
+      0. Randomly select 10 samples as initial training set (x and y[3]).
+
+      1. Start with training a GP model with training set.
+      2. Apply the GP model on the remaining training samples for predicting 4th output.
+      3. Select ONE sample with highest predicted uncertainty and add it to the training set.
+
+Repeat steps 2-3 until reaching the budget of 50 training samples.
+
+      4. Use the selected 50 training samples to train the final model and predict on the test set.
+
+Results:
+After using 50 training samples from 900 training samples to train the final model, the model achieves Mean Absolute Percentage Error (MAPE) of {MAPE:.2f} % on the test set of y[3].
+''')
 
 print('End of ALGP example training script.')
