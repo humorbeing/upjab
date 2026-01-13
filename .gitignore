@@ -13,3 +13,5 @@ extra_packages/upjab_gradio_simple/upjab_gradio_simple/learn/**/*.webp
 
 extra_packages/upjab_FirstPackage_OnlyPythonFile
 
+
+data/video/*_datamosh.mp4
