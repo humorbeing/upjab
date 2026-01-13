@@ -4,3 +4,4 @@
 -e ./extra_packages/ThreeThreadsTool_HeavyModel_On_VideoStream_Tool
 -e ./extra_packages/upjab_ActGP
 -e ./extra_packages/ALGP_package
+-e ./extra_packages/reinforcement_learning_PNU_course
