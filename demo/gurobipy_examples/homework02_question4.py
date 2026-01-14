@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import random
 
 from upjab import AP
-with open(AP('demo/gurobipy_example/ex1data1.txt'), 'r') as f:
+with open(AP('demo/gurobipy_examples/ex1data1.txt'), 'r') as f:
     lines = f.readlines()
 
 x = []
