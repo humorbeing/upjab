@@ -1,0 +1,23 @@
+name: upjab-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - nvidia::cuda-nvcc=12.6
+  - nvidia::cuda-compiler=12.6 
+  - pip
+  - pip:
+    - gradio
+    - fastapi
+    - uvicorn[standard]
+    # - PyYAML
+    - omegaconf
+    - loguru
+    - matplotlib
+    - torch
+    - torchvision
+    - gurobipy
+
+# conda env create -f environment.yml
+# match up torch cuda version and nvcc cuda version
