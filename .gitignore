@@ -15,3 +15,7 @@ extra_packages/upjab_FirstPackage_OnlyPythonFile
 
 
 data/video/*_datamosh.mp4
+environment_temp.yml
+
+**/*.so
+demo/build_cu_cpp_NoPackage/build

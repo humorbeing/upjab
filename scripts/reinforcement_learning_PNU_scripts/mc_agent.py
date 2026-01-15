@@ -178,7 +178,7 @@ if __name__ == "__main__":
             # 에피소드가 완료되었다면, 가치함수 업데이트
             if done:
                 print('- Episode finished... now, update the value function')
-                if EveryVisit0_FirstVisit1 is 0:
+                if EveryVisit0_FirstVisit1 == 0:
                     agent.update_EveryVisit()
                 else:
                     agent.update_FirstVisit()
