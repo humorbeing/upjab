@@ -43,9 +43,15 @@ def threadBoth(source=0):
 
  
 if __name__ == "__main__":
+    
     # video_source = 'rtp://192.168.0.4:5004'
     video_source = 0
     # video_source = 'rtmp://115.22.172.73/live/stream'
     # video_source = 'data/KakaoTalk_20250226_121532508.mp4'
-    video_source = 'data/video/v01.avi'
+    from upjab.video.extend_video_by_repetition_module import extend_video_by_repetition
+    extend_video_by_repetition(
+        "data/video/v01.avi",
+        target_length_sec=3600
+    )
+    video_source = 'data/video/v01_extended.mp4'
     threadBoth(video_source)
