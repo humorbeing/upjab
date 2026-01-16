@@ -15,6 +15,8 @@ ROOT = os.path.dirname(ROOT)
 def AP(relative_path):    
     return os.path.join(ROOT, relative_path)
 
+import os
+os.makedirs(AP("saves"),exist_ok=True)
 # from xxx import AP
 # target_file = AP('xxxxx')
 
