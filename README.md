@@ -1,5 +1,12 @@
 # Upjab
 
+## git setup
+
+```bash
+git config --global user.name "ray"
+git config --global user.email "geemguang@gmail.com"
+```
+
 ## conda `env` setup
 
 
