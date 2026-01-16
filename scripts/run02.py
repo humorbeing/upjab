@@ -1,10 +1,16 @@
 from upjab.tool.run_folder_module import run_folder
+import subprocess
 
 target_folder = "extra_packages/build_cu_cpp_package/scripts"
 run_folder(target_folder)
 
+target_folder = "demo/pytorch_model_visualize"
+run_folder(target_folder)
 
-import subprocess
+# subprocess.run(
+#     "tensorboard --logdir=./saves/torchlogs",
+#     shell=True
+# )
 
 subprocess.run(
     "python scripts/run01.py",

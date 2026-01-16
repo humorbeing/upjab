@@ -11,3 +11,6 @@ matplotlib
 torch
 torchvision
 gurobipy
+
+torchview
+tensorboard
