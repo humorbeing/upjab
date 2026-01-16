@@ -15,6 +15,7 @@ extra_packages/upjab_FirstPackage_OnlyPythonFile
 
 
 data/video/*_datamosh.mp4
+data/video/*_extended.mp4
 environment_temp.yml
 
 **/*.so
