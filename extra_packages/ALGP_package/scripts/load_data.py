@@ -1,5 +1,8 @@
-from load_data_module import LoadDATA
-
+try:
+    from .load_data_module import LoadDATA
+except:
+    from load_data_module import LoadDATA
+    
 def load_data():  
 
     data = LoadDATA()
