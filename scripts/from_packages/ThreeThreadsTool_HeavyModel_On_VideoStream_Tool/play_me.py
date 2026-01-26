@@ -26,8 +26,8 @@ if __name__ == "__main__":
     video_source = 'data/video/v01_extended.mp4'
     
     
-    # is_timer_video_needed = True
-    is_timer_video_needed = False
+    is_timer_video_needed = True
+    # is_timer_video_needed = False
     if is_timer_video_needed:
         from create_timer_video import make_timer_video
         make_timer_video(
