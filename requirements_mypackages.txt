@@ -4,3 +4,7 @@
 -e ./extra_packages/ThreeThreadsTool_HeavyModel_On_VideoStream_Tool
 -e ./extra_packages/upjab_ActGP
 -e ./extra_packages/ALGP_package
+-e ./extra_packages/reinforcement_learning_PNU_course
+
+# -e ./extra_packages/build_cu_cpp_package --no-build-isolation  # this is not allowed
+-e ./extra_packages/build_cu_cpp_package

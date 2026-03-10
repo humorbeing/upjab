@@ -6,7 +6,9 @@ class ModelThread:
     def __init__(self, frame_queue, detection_model):
         self.frame_queue = frame_queue        
         self.stopped = False
-        self.results = {}        
+        self.results = {
+            'Model Result': 'Awaiting...'
+        }        
         self.anomaly_detection = detection_model
 
     def start(self):    
@@ -18,7 +20,11 @@ class ModelThread:
             if self.frame_queue.full():
                 snippet = list(self.frame_queue.get())
                 self.results = self.anomaly_detection(snippet)
+            else:
                 
+                self.results = {
+                    'Model Result': f'{len(self.frame_queue)}/{self.frame_queue._max_size} Awaiting...'
+                }
                 
             
 

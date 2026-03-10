@@ -2,7 +2,8 @@
 # __version__ = "0.1.2"  # 20250428
 # __version__ = "0.1.3"  # 20250709
 # __version__ = "0.1.4"  # 20250804
-__version__ = "0.1.5"  # 20251221
+# __version__ = "0.1.5"  # 20251221
+__version__ = "0.1.6"  # 20260113
 
 import os
 ROOT = os.path.dirname(__file__)
@@ -14,6 +15,8 @@ ROOT = os.path.dirname(ROOT)
 def AP(relative_path):    
     return os.path.join(ROOT, relative_path)
 
+import os
+os.makedirs(AP("saves"),exist_ok=True)
 # from xxx import AP
 # target_file = AP('xxxxx')
 

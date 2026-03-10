@@ -16,32 +16,40 @@ class VideoShow:
             self.sleep_time = self.one_frame_time - self.do_time
         else:
             self.sleep_time = 0
+        
+        self.status = {
+            'Output FPS': output_FPS
+        }
 
     def start(self):
         Thread(target=self.show, args=()).start()
         return self
 
     def show(self):
-        start_time = time.time()
-        init_time = start_time
+        init_time = time.perf_counter()
+        
         count = 0
         while not self.stopped:
             count += 1
             # print("show image")
             cv2.imshow("Video", self.frame)
             
+            
             # if self.sleep_time == 0:
             #     pass
             # else:
             #     time.sleep(self.sleep_time)
-            on_time = time.time() - init_time
+            on_time = time.perf_counter() - init_time
             if self.one_frame_time > on_time:
-                time.sleep(self.one_frame_time - on_time)
-            new_init_time = time.time()
-            duration = new_init_time - start_time
-            this_time = new_init_time - init_time
-            init_time = new_init_time            
+                time.sleep(self.one_frame_time - on_time)            
+
+            this_time = time.perf_counter()
+            duration = this_time - init_time
+            init_time = this_time
             # print(f'Average 1F duration: {duration / count:0.05f}. Average FPS: {count / duration:0.05f}. FPS: {1/this_time:0.05f}')
+            self.status = {
+                'Output FPS': 1.0 / duration
+            }
             if cv2.waitKey(1) == ord("q"):
                 self.stopped = True
 

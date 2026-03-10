@@ -1,3 +1,43 @@
+# Upjab
+
+## git setup
+
+```bash
+git config --global user.name "ray"
+git config --global user.email "geemguang@gmail.com"
+```
+
+## conda `env` setup
+
+
+### conda env setup
+
+```bash
+conda create -n upjab python=3.11 -y
+conda activate upjab
+```
+
+### conda env setup `environment.yml`
+
+```bash
+conda env create -f environment.yml
+```
+
+### conda remove venv
+
+```bash
+conda env remove -n <environment_name>
+conda clean --all
+```
+
+### conda others
+
+```bash
+conda env export >> environment_temp.yml
+```
+
+
+---
 
 why develop is 8 commits behind in Github?
 
