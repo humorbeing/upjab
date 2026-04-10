@@ -22,3 +22,5 @@ environment_temp.yml
 demo/build_cu_cpp_NoPackage/build
 
 saves
+
+data/MNIST
