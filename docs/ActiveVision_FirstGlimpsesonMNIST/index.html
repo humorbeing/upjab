@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Active Vision: First Glimpses on MNIST</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-title">
+        <h1>Active Vision: First Glimpses on MNIST</h1>
+        <p>
+          Move the cursor over Panel 1, Panel 4, or Panel 5 to move the crop area. Use Up and Down to change crop size, and Left and Right to change N size. Left-click to remember a glimpse in Panel 5; right-click to reset. Black out Panels 1-4, then try to reconstruct a recognizable digit with the fewest accumulated pixels.
+        </p>
+      </header>
+
+      <section class="panel-grid" aria-label="MNIST patch capture panels">
+        <article class="panel">
+          <canvas id="originalCanvas" aria-label="Original image"></canvas>
+          <p id="originalTitle">Original</p>
+        </article>
+        <article class="panel">
+          <canvas id="croppedCanvas" aria-label="Cropped patch"></canvas>
+          <p id="croppedTitle">Cropped</p>
+        </article>
+        <article class="panel">
+          <canvas id="resizedCanvas" aria-label="Resized patch"></canvas>
+          <p id="resizedTitle">Resized</p>
+        </article>
+        <article class="panel">
+          <canvas id="reconstructedCanvas" aria-label="Reconstructed crop"></canvas>
+          <p id="reconstructedTitle">Reconstructed Crop</p>
+        </article>
+        <article class="panel">
+          <canvas id="rememberedCanvas" aria-label="Remembered patches"></canvas>
+          <p id="rememberedTitle">Remembered</p>
+        </article>
+      </section>
+
+      <section class="controls" aria-label="Controls">
+        <div class="button-row">
+          <button id="changeImageButton" type="button">Change Image</button>
+          <button id="rememberButton" type="button">Remember</button>
+          <button id="resetButton" type="button">Reset</button>
+        </div>
+
+        <div class="checkbox-row" aria-label="Blackout controls">
+          <label><input id="blackout0" type="checkbox"> Blackout Panel 1</label>
+          <label><input id="blackout1" type="checkbox"> Blackout Panel 2</label>
+          <label><input id="blackout2" type="checkbox"> Blackout Panel 3</label>
+          <label><input id="blackout3" type="checkbox"> Blackout Panel 4</label>
+          <label><input id="blackout4" type="checkbox"> Blackout Panel 5</label>
+        </div>
+
+        <div class="status-stack" aria-live="polite">
+          <p id="sizeStatus">Crop Size to N Size: [0 x 0] ==&gt; [0 x 0]</p>
+          <p id="rememberStatus">Remember Count: 0</p>
+          <p id="pixelStatus">Accumulated Pixels: 0</p>
+        </div>
+
+        <div class="slider-grid">
+          <label for="centerXSlider">Center X</label>
+          <input id="centerXSlider" type="range" min="0" max="28" value="14" step="0.1">
+          <output id="centerXValue" for="centerXSlider">14.0</output>
+
+          <label for="centerYSlider">Center Y</label>
+          <input id="centerYSlider" type="range" min="0" max="28" value="14" step="0.1">
+          <output id="centerYValue" for="centerYSlider">14.0</output>
+
+          <label for="cropSizeSlider">Crop Size (S)</label>
+          <input id="cropSizeSlider" type="range" min="1" max="28" value="14" step="1">
+          <output id="cropSizeValue" for="cropSizeSlider">14</output>
+
+          <label for="outputSizeSlider">Output Size (N)</label>
+          <input id="outputSizeSlider" type="range" min="1" max="28" value="4" step="1">
+          <output id="outputSizeValue" for="outputSizeSlider">4</output>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
