@@ -2,7 +2,11 @@
 
 Static GitHub Pages app for exploring MNIST patch capture. It shows the original digit, a square crop, the crop resized to `N x N`, the resized patch reconstructed into the original crop area, and an accumulated remembered view.
 
-Move over the Original or Reconstructed Crop canvas to set `(cx, cy)`. Left-click to remember the current patch and right-click to reset memory. Use the wheel over Original to adjust crop size `S`, the wheel over Reconstructed Crop to adjust output size `N`, or use the arrow keys while one of those panels is active.
+## Instructions
+
+Move the cursor over Panel 1, Panel 4, or Panel 5 to move the crop area. Use Up and Down to change crop size, and Left and Right to change N size. Left-click to remember the current glimpse in Panel 5; right-click to reset.
+
+Black out Panels 1-4 to hide different parts of the process. The challenge is to use the fewest accumulated pixels while still reconstructing a recognizable digit in Panel 5.
 
 ## Files
 

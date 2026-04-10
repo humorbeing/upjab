@@ -37,7 +37,6 @@ const elements = {
   changeImageButton: document.getElementById("changeImageButton"),
   rememberButton: document.getElementById("rememberButton"),
   resetButton: document.getElementById("resetButton"),
-  sampleLabel: document.getElementById("sampleLabel"),
   sizeStatus: document.getElementById("sizeStatus"),
   rememberStatus: document.getElementById("rememberStatus"),
   pixelStatus: document.getElementById("pixelStatus"),
@@ -376,7 +375,10 @@ function renderAll() {
     rect: { cx: state.cx, cy: state.cy, size: state.cropSize },
     overlayText: sizeNote,
   });
-  drawPanel(elements.canvases.remembered, panelImages[4]);
+  drawPanel(elements.canvases.remembered, panelImages[4], {
+    rect: { cx: state.cx, cy: state.cy, size: state.cropSize },
+    overlayText: sizeNote,
+  });
 
   elements.titles.original.textContent = `Original (${width}x${height})`;
   elements.titles.cropped.textContent = `Cropped ${state.cropSize}x${state.cropSize}`;
@@ -386,9 +388,6 @@ function renderAll() {
   elements.sizeStatus.textContent = `Crop Size to N Size: ${sizeNote}`;
   elements.rememberStatus.textContent = `Remember Count: ${state.rememberCount}`;
   elements.pixelStatus.textContent = `Accumulated Pixels: ${state.accumulatedPixels}`;
-  elements.sampleLabel.textContent = state.currentSample
-    ? `Digit: ${state.currentSample.label}, sample ${state.currentSample.index_within_class}`
-    : "Digit: loading";
   syncControls();
 }
 
@@ -466,7 +465,7 @@ function adjustOutputSize(delta) {
 }
 
 function handleWheel(event) {
-  if (state.activePanel !== 1 && state.activePanel !== 4) return;
+  if (!isInteractivePanel(state.activePanel)) return;
   event.preventDefault();
 
   const delta = event.deltaY < 0 ? 1 : -1;
@@ -478,7 +477,7 @@ function handleWheel(event) {
 }
 
 function handleArrowKeys(event) {
-  if (state.activePanel !== 1 && state.activePanel !== 4) return;
+  if (!isInteractivePanel(state.activePanel)) return;
 
   if (event.key === "ArrowUp") {
     event.preventDefault();
@@ -493,6 +492,10 @@ function handleArrowKeys(event) {
     event.preventDefault();
     adjustOutputSize(1);
   }
+}
+
+function isInteractivePanel(panelIndex) {
+  return panelIndex === 1 || panelIndex === 4 || panelIndex === 5;
 }
 
 function bindPointerCanvas(canvas, panelIndex) {
@@ -547,6 +550,7 @@ function bindControls() {
 
   bindPointerCanvas(elements.canvases.original, 1);
   bindPointerCanvas(elements.canvases.reconstructed, 4);
+  bindPointerCanvas(elements.canvases.remembered, 5);
   window.addEventListener("keydown", handleArrowKeys);
   window.addEventListener("resize", renderAll);
 }
@@ -571,7 +575,6 @@ async function init() {
     setImage(state.samples[0], true);
   } catch (error) {
     console.error(error);
-    elements.sampleLabel.textContent = "Digit: samples unavailable";
     renderAll();
   }
 }

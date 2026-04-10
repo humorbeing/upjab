@@ -10,6 +10,9 @@
     <main class="app-shell">
       <header class="page-title">
         <h1>Active Vision: First Glimpses on MNIST</h1>
+        <p>
+          Move the cursor over Panel 1, Panel 4, or Panel 5 to move the crop area. Use Up and Down to change crop size, and Left and Right to change N size. Left-click to remember a glimpse in Panel 5; right-click to reset. Black out Panels 1-4, then try to reconstruct a recognizable digit with the fewest accumulated pixels.
+        </p>
       </header>
 
       <section class="panel-grid" aria-label="MNIST patch capture panels">
@@ -40,7 +43,6 @@
           <button id="changeImageButton" type="button">Change Image</button>
           <button id="rememberButton" type="button">Remember</button>
           <button id="resetButton" type="button">Reset</button>
-          <span id="sampleLabel" class="sample-label">Digit: loading</span>
         </div>
 
         <div class="checkbox-row" aria-label="Blackout controls">
