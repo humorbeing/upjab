@@ -51,6 +51,13 @@ button:focus-visible {
   color: #f4f7f5;
 }
 
+.page-title p {
+  max-width: 82rem;
+  margin: 0.45rem 0 0;
+  line-height: 1.45;
+  color: #d9e3dc;
+}
+
 .panel-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -99,10 +106,6 @@ button:focus-visible {
 
 .checkbox-row label {
   white-space: nowrap;
-}
-
-.sample-label {
-  color: #b8f08a;
 }
 
 .status-stack {
