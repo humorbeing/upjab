@@ -1,5 +1,7 @@
 # Upjab
 
+[Upjab Github Page](https://humorbeing.github.io/upjab/)
+
 ## git setup
 
 ```bash
