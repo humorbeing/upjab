@@ -1,5 +1,4 @@
 """
-v0.1.1 - 2024-06-17
 MNIST Patch-Capture Program using Tkinter.
 
 This app displays an MNIST image, a square crop, and resized/reconstructed views.
@@ -14,6 +13,8 @@ from PIL import Image, ImageTk
 from torchvision import datasets
 
 RESAMPLING = getattr(Image, "Resampling", Image)
+MNIST_DATA_ROOT = "data/online_datasets"
+INTERACTIVE_IMAGE_PANELS = (1, 4, 5)
 
 
 def create_image_state(image: np.ndarray, is_grayscale: bool) -> Dict[str, object]:
@@ -27,7 +28,7 @@ def load_mnist_sample(index: int = 0) -> Dict[str, object]:
     """
     Load a single MNIST image.
     """
-    dataset = datasets.MNIST(root="./data", train=True, download=True)
+    dataset = datasets.MNIST(root=MNIST_DATA_ROOT, train=True, download=True)
     image, _ = dataset[index]
     return create_image_state(np.array(image).astype(np.float32) / 255.0, True)
 
@@ -36,7 +37,7 @@ def load_random_mnist_sample() -> Dict[str, object]:
     """
     Load a random MNIST image from the training split.
     """
-    dataset = datasets.MNIST(root="./data", train=True, download=True)
+    dataset = datasets.MNIST(root=MNIST_DATA_ROOT, train=True, download=True)
     random_index = np.random.randint(0, len(dataset))
     image, _ = dataset[random_index]
     return create_image_state(np.array(image).astype(np.float32) / 255.0, True)
@@ -373,16 +374,23 @@ class MNISTPatchApp:
         self.memory_panel.grid(row=0, column=4, sticky="nsew", padx=(6, 0))
         self.original_panel.canvas.bind("<Enter>", lambda event: self._on_panel_enter(event, 1))
         self.original_panel.canvas.bind("<Leave>", self._on_panel_leave)
-        self.original_panel.canvas.bind("<Motion>", self._on_pointer_panel_1_or_4)
+        self.original_panel.canvas.bind("<Motion>", self._on_pointer_interactive_panel)
         self.reconstructed_panel.canvas.bind("<Enter>", lambda event: self._on_panel_enter(event, 4))
         self.reconstructed_panel.canvas.bind("<Leave>", self._on_panel_leave)
-        self.reconstructed_panel.canvas.bind("<Motion>", self._on_pointer_panel_1_or_4)
-        for canvas in (self.original_panel.canvas, self.reconstructed_panel.canvas):
+        self.reconstructed_panel.canvas.bind("<Motion>", self._on_pointer_interactive_panel)
+        self.memory_panel.canvas.bind("<Enter>", lambda event: self._on_panel_enter(event, 5))
+        self.memory_panel.canvas.bind("<Leave>", self._on_panel_leave)
+        self.memory_panel.canvas.bind("<Motion>", self._on_pointer_interactive_panel)
+        for canvas in (
+            self.original_panel.canvas,
+            self.reconstructed_panel.canvas,
+            self.memory_panel.canvas,
+        ):
             canvas.bind("<MouseWheel>", self._on_mouse_wheel)
             canvas.bind("<Button-4>", self._on_mouse_wheel)
             canvas.bind("<Button-5>", self._on_mouse_wheel)
-            canvas.bind("<Button-1>", self._on_left_click_panel_1_or_4)
-            canvas.bind("<Button-3>", self._on_right_click_panel_1_or_4)
+            canvas.bind("<Button-1>", self._on_left_click_interactive_panel)
+            canvas.bind("<Button-3>", self._on_right_click_interactive_panel)
 
         controls = ttk.Frame(main, padding=(0, 12, 0, 0))
         controls.grid(row=1, column=0, sticky="ew")
@@ -570,13 +578,16 @@ class MNISTPatchApp:
 
     def _on_panel_enter(self, event: tk.Event, panel_index: int) -> None:
         self.active_mouse_panel = panel_index
-        self._on_pointer_panel_1_or_4(event)
+        self._on_pointer_interactive_panel(event)
 
     def _on_panel_leave(self, _event: tk.Event) -> None:
         self.active_mouse_panel = None
 
-    def _on_pointer_panel_1_or_4(self, event: tk.Event) -> None:
-        panel = self.original_panel if event.widget is self.original_panel.canvas else self.reconstructed_panel
+    def _on_pointer_interactive_panel(self, event: tk.Event) -> None:
+        panel = self._get_interactive_panel_for_widget(event.widget)
+        if panel is None:
+            return
+
         coords = panel.canvas_to_image_coords(event.x, event.y)
         if coords is None:
             return
@@ -588,18 +599,27 @@ class MNISTPatchApp:
         self.is_updating = False
         self._render_all()
 
-    def _on_left_click_panel_1_or_4(self, event: tk.Event) -> None:
-        self._on_pointer_panel_1_or_4(event)
-        if self.active_mouse_panel in (1, 4):
+    def _get_interactive_panel_for_widget(self, widget: tk.Widget) -> ImageCanvas | None:
+        if widget is self.original_panel.canvas:
+            return self.original_panel
+        if widget is self.reconstructed_panel.canvas:
+            return self.reconstructed_panel
+        if widget is self.memory_panel.canvas:
+            return self.memory_panel
+        return None
+
+    def _on_left_click_interactive_panel(self, event: tk.Event) -> None:
+        self._on_pointer_interactive_panel(event)
+        if self.active_mouse_panel in INTERACTIVE_IMAGE_PANELS:
             self._remember_current_crop()
 
-    def _on_right_click_panel_1_or_4(self, event: tk.Event) -> None:
-        self._on_pointer_panel_1_or_4(event)
-        if self.active_mouse_panel in (1, 4):
+    def _on_right_click_interactive_panel(self, event: tk.Event) -> None:
+        self._on_pointer_interactive_panel(event)
+        if self.active_mouse_panel in INTERACTIVE_IMAGE_PANELS:
             self._reset_memory()
 
     def _on_mouse_wheel(self, event: tk.Event) -> None:
-        if self.active_mouse_panel not in (1, 4):
+        if self.active_mouse_panel not in INTERACTIVE_IMAGE_PANELS:
             return
 
         delta = 0
@@ -613,7 +633,7 @@ class MNISTPatchApp:
         if delta == 0:
             return
 
-        if self.active_mouse_panel == 1:
+        if self.active_mouse_panel in (1, 5):
             current = int(self.size_var.get())
             minimum = int(float(self.size_scale.cget("from")))
             maximum = int(float(self.size_scale.cget("to")))
@@ -637,7 +657,7 @@ class MNISTPatchApp:
                 self._render_all()
 
     def _on_arrow_key(self, event: tk.Event) -> None:
-        if self.active_mouse_panel not in (1, 4):
+        if self.active_mouse_panel not in INTERACTIVE_IMAGE_PANELS:
             return
 
         if event.keysym == "Up":
@@ -700,6 +720,8 @@ class MNISTPatchApp:
         self.memory_panel.set_content(
             panel_5_image,
             f"Remembered ({image.shape[1]}x{image.shape[0]})",
+            rect=(cx, cy, size),
+            overlay_text=size_note,
         )
 
 

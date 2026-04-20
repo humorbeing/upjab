@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Quantization Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Interactive Image Lab</p>
+          <h1>Image Quantization Studio</h1>
+          <p class="hero-text">
+            Load an image, switch between RGB and true 1-channel grayscale
+            processing, and quantize the result at 8, 4, 2, or 1-bit depth in real time.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-label">Mode</span>
+            <strong id="heroMode">RGB</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Bit Depth</span>
+            <strong id="heroBits">8-bit</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Colors / Channel</span>
+            <strong id="heroLevels">256</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Source</span>
+            <strong id="heroSource">Sample image</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Original Total Bits</span>
+            <strong id="heroOriginalTotalBits">13,086,720</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Quantized Total Bits</span>
+            <strong id="heroQuantizedTotalBits">3,271,680</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Bit Difference</span>
+            <strong id="heroBitRatio">4x</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Original Data Type</span>
+            <strong id="heroOriginalDtype">Float32Array</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Quantized Data Type</span>
+            <strong id="heroQuantizedDtype">Float32Array</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel controls-panel">
+          <div class="panel-head">
+            <h2>Controls</h2>
+            <p>Quantization is computed manually in JavaScript with canvas pixel data.</p>
+          </div>
+
+          <label class="upload-zone" for="imageInput">
+            <input id="imageInput" type="file" accept="image/*" />
+            <span class="upload-title">Drop in a new image</span>
+            <span class="upload-subtitle">PNG, JPEG, GIF, BMP, or WebP</span>
+          </label>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <span>Color mode</span>
+            </div>
+            <div class="mode-toggle" role="radiogroup" aria-label="Color mode">
+              <label class="mode-pill">
+                <input id="modeRgb" type="radio" name="colorMode" value="rgb" checked />
+                <span>RGB</span>
+              </label>
+              <label class="mode-pill">
+                <input id="modeGray" type="radio" name="colorMode" value="gray" />
+                <span>Gray 1-channel</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="bitDepth">Bit depth</label>
+              <output id="bitLabel" for="bitDepth">8-bit</output>
+            </div>
+            <input id="bitDepth" type="range" min="0" max="3" step="1" value="3" />
+            <div class="tick-row">
+              <span>1-bit</span>
+              <span>2-bit</span>
+              <span>4-bit</span>
+              <span>8-bit</span>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="downloadButton" type="button">Download Current PNG</button>
+            <button id="resetButton" type="button" class="ghost">Reset to Sample</button>
+          </div>
+
+          <div class="formula-card">
+            <h3>Mapping Logic</h3>
+            <p>
+              Level index = round(pixel × (2<sup>b</sup> - 1) / 255)
+            </p>
+            <p>
+              Quantized value = round(level index × 255 / (2<sup>b</sup> - 1))
+            </p>
+            <p id="modeFormulaText">
+              RGB mode quantizes each R, G, and B channel separately.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel viewer-panel">
+          <div class="panel-head">
+            <h2>Live Comparison</h2>
+            <p>The original stays unchanged while the quantized canvas updates instantly.</p>
+          </div>
+
+          <div class="viewer-grid">
+            <article class="canvas-card">
+              <div class="card-top">
+                <h3>Original Display</h3>
+                <span class="tag">Uint8 View</span>
+              </div>
+              <canvas id="originalCanvas" width="426" height="320"></canvas>
+            </article>
+
+            <article class="canvas-card">
+              <div class="card-top">
+                <h3>Float32 Source</h3>
+                <span class="tag">Float32 View</span>
+              </div>
+              <canvas id="floatCanvas" width="426" height="320"></canvas>
+            </article>
+
+            <article class="canvas-card active-card">
+              <div class="card-top">
+                <h3>Quantized Output</h3>
+                <span class="tag accent" id="activeBitTag">RGB · 8-bit</span>
+              </div>
+              <canvas id="quantizedCanvas" width="426" height="320"></canvas>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <section class="panel gallery-panel">
+        <div class="panel-head">
+          <h2>All Variants</h2>
+          <p>Each preview is regenerated from the original image data so you can compare the full range.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="mini-card">
+            <div class="card-top">
+              <h3>8-bit</h3>
+              <span class="tag">256 levels</span>
+            </div>
+            <canvas data-bits="8" class="mini-canvas" width="320" height="240"></canvas>
+          </article>
+
+          <article class="mini-card">
+            <div class="card-top">
+              <h3>4-bit</h3>
+              <span class="tag">16 levels</span>
+            </div>
+            <canvas data-bits="4" class="mini-canvas" width="320" height="240"></canvas>
+          </article>
+
+          <article class="mini-card">
+            <div class="card-top">
+              <h3>2-bit</h3>
+              <span class="tag">4 levels</span>
+            </div>
+            <canvas data-bits="2" class="mini-canvas" width="320" height="240"></canvas>
+          </article>
+
+          <article class="mini-card">
+            <div class="card-top">
+              <h3>1-bit</h3>
+              <span class="tag">2 levels</span>
+            </div>
+            <canvas data-bits="1" class="mini-canvas" width="320" height="240"></canvas>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
