@@ -24,3 +24,4 @@ demo/build_cu_cpp_NoPackage/build
 saves
 
 data/MNIST
+data/online_datasets
